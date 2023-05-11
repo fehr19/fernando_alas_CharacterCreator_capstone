@@ -1,6 +1,14 @@
 package com.perscholas.models;
 
-public class Character {
+import javax.persistence.*;
+import java.io.Serializable;
+
+
+@Entity
+public class Character implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int CharacterId;
     private String name;
     private byte level;
     private String ancestry;
@@ -11,6 +19,11 @@ public class Character {
     private short speed;
     private short defense;
     private int experience;
+    @OneToOne(cascade = CascadeType.ALL)
+    private CharacterAbilities AbilitiesId;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Weapon weaponId;
 
     public Character() {
     }
@@ -19,6 +32,14 @@ public class Character {
         this.name = name;
         this.ancestry = ancestry;
         this.classProfession = classProfession;
+    }
+
+    public int getCharacterId() {
+        return CharacterId;
+    }
+
+    public void setCharacterId(int characterId) {
+        CharacterId = characterId;
     }
 
     public String getName() {
@@ -99,5 +120,21 @@ public class Character {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    public CharacterAbilities getAbilitiesId() {
+        return AbilitiesId;
+    }
+
+    public void setAbilitiesId(CharacterAbilities abilitiesId) {
+        AbilitiesId = abilitiesId;
+    }
+
+    public Weapon getWeaponId() {
+        return weaponId;
+    }
+
+    public void setWeaponId(Weapon weaponId) {
+        this.weaponId = weaponId;
     }
 }
