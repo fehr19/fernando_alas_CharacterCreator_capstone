@@ -9,6 +9,7 @@ import java.io.Serializable;
 @Entity
 public class CharacterAbilities implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int AbilitiesId;
     byte accuracy;
     byte communication;

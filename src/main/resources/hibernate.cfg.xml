@@ -5,10 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Drop and re-create the database on startup -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/usersdb</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/CharacterCreator</property>
         <property name="connection.username">root</property>
         <property name="connection.password">password</property>
         <!-- MySQL DB dialect -->
@@ -19,6 +19,7 @@
         <!-- Mapping entity file -->
         <mapping class="com.perscholas.models.Character"/>
         <mapping class="com.perscholas.models.CharacterAbilities"/>
+        <mapping class="com.perscholas.models.Weapon"/>
 
     </session-factory>
 </hibernate-configuration>

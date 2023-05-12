@@ -1,13 +1,14 @@
 package com.perscholas.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 public class Weapon implements Serializable {
     @Id
-    private int weaponId;
+    @ManyToOne
+    @JoinColumn(name="CharacterId", nullable=false)
+    private Character character;
     private String weaponGroup;
     private String weaponName;
     private String damage;
@@ -16,12 +17,12 @@ public class Weapon implements Serializable {
     //find a place to define ranged weapon fields
 
 
-    public int getWeaponId() {
-        return weaponId;
+    public Character getCharacter() {
+        return character;
     }
 
-    public void setWeaponId(int weaponId) {
-        this.weaponId = weaponId;
+    public void setCharacter(Character character) {
+        this.character = character;
     }
 
     public String getWeaponName() {

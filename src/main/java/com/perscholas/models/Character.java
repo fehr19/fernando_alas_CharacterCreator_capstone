@@ -2,12 +2,13 @@ package com.perscholas.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 
 @Entity
 public class Character implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int CharacterId;
     private String name;
     private byte level;
@@ -20,10 +21,11 @@ public class Character implements Serializable {
     private short defense;
     private int experience;
     @OneToOne(cascade = CascadeType.ALL)
-    private CharacterAbilities AbilitiesId;
+    @JoinColumn(name = "CharacterId", referencedColumnName = "AbilitiesId")
+    private CharacterAbilities characterAbilities;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Weapon weaponId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
+    private Set<Weapon> weapons;
 
     public Character() {
     }
@@ -122,19 +124,19 @@ public class Character implements Serializable {
         this.experience = experience;
     }
 
-    public CharacterAbilities getAbilitiesId() {
-        return AbilitiesId;
+    public CharacterAbilities getCharacterAbilities() {
+        return characterAbilities;
     }
 
-    public void setAbilitiesId(CharacterAbilities abilitiesId) {
-        AbilitiesId = abilitiesId;
+    public void setCharacterAbilities(CharacterAbilities characterAbilities) {
+        this.characterAbilities = characterAbilities;
     }
 
-    public Weapon getWeaponId() {
-        return weaponId;
+    public Set<Weapon> getWeapons() {
+        return weapons;
     }
 
-    public void setWeaponId(Weapon weaponId) {
-        this.weaponId = weaponId;
+    public void setWeapons(Set<Weapon> weapons) {
+        this.weapons = weapons;
     }
 }
