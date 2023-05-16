@@ -8,6 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -30,25 +33,23 @@ public class Main {
         w2.setWeaponName("Sword");
         w2.setDamage("2d6");
 
+        session.save(w1);
+        session.save(w2);
+
+        List<Weapon> char1Weapons = new ArrayList<>();
+        char1Weapons.add(w1);
+        char1Weapons.add(w2);
+
+
         CharacterAbilities ca2 = new CharacterAbilities();
         ca2.setStrength((byte) 2);
         ca2.setDexterity((byte) 4);
 
-        Character character1 = new Character();
-        character1.setName("Frodo");
-        character1.setAncestry("Hobbit");
-        character1.setLevel((byte) 1);
-        //character1.setCharacterAbilities(ca1);
-
-        w1.setCharacter(character1);
-        w2.setCharacter(character1);
+        Character character1 = new Character("Frodo", "Hobbit", "Rogue");
+        //character1.setWeaponsList(char1Weapons);
 
 
-        Character character2 = new Character();
-        character2.setName("Legolas");
-        character2.setAncestry("Elf");
-        character2.setLevel((byte) 3);
-        //character2.setCharacterAbilities(ca2);
+        Character character2 = new Character("Legolas", "Elf", "Archer");
 
         session.save(ca1);
         session.save(ca2);

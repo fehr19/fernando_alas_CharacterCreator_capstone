@@ -1,16 +1,16 @@
 package com.perscholas.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+/*@Entity
+@Table(name = "character_abilities")*/
 public class CharacterAbilities implements Serializable {
-    @Id
+   /* @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Abilities_ID")*/
     private int AbilitiesId;
+
     byte accuracy;
     byte communication;
     byte constitution;

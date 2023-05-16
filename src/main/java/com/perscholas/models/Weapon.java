@@ -3,11 +3,13 @@ package com.perscholas.models;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+/*@Entity*/
 public class Weapon implements Serializable {
-    @Id
-    @ManyToOne
-    @JoinColumn(name="CharacterId", nullable=false)
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)*/
+    int id;
+    /*@ManyToOne
+    @JoinColumn(name = "Character_ID")*/
     private Character character;
     private String weaponGroup;
     private String weaponName;

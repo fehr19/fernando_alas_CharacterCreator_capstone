@@ -2,6 +2,7 @@ package com.perscholas.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 
@@ -9,23 +10,23 @@ import java.util.Set;
 public class Character implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int CharacterId;
-    private String name;
-    private byte level;
-    private String ancestry;
-    private String socialClass;
-    private String background;
-    private String classProfession;
-    private short health;
-    private short speed;
-    private short defense;
-    private int experience;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CharacterId", referencedColumnName = "AbilitiesId")
-    private CharacterAbilities characterAbilities;
+    private int characterId;
+    String name;
+    int level;
+    String ancestry;
+    String socialClass;
+    String background;
+    String classProfession;
+    int health;
+    int speed;
+    int defense;
+    int experience;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "character")
-    private Set<Weapon> weapons;
+    //@OneToOne(cascade = CascadeType.ALL)
+    //private CharacterAbilities characterAbilities;
+
+    //@OneToMany(targetEntity = Weapon.class, cascade = CascadeType.ALL)
+    //private List weaponsList;
 
     public Character() {
     }
@@ -37,11 +38,11 @@ public class Character implements Serializable {
     }
 
     public int getCharacterId() {
-        return CharacterId;
+        return characterId;
     }
 
     public void setCharacterId(int characterId) {
-        CharacterId = characterId;
+        this.characterId = characterId;
     }
 
     public String getName() {
@@ -52,11 +53,11 @@ public class Character implements Serializable {
         this.name = name;
     }
 
-    public byte getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -92,27 +93,27 @@ public class Character implements Serializable {
         this.classProfession = classProfession;
     }
 
-    public short getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    public void setHealth(short health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
-    public short getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(short speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
-    public short getDefense() {
+    public int getDefense() {
         return defense;
     }
 
-    public void setDefense(short defense) {
+    public void setDefense(int defense) {
         this.defense = defense;
     }
 
@@ -122,21 +123,5 @@ public class Character implements Serializable {
 
     public void setExperience(int experience) {
         this.experience = experience;
-    }
-
-    public CharacterAbilities getCharacterAbilities() {
-        return characterAbilities;
-    }
-
-    public void setCharacterAbilities(CharacterAbilities characterAbilities) {
-        this.characterAbilities = characterAbilities;
-    }
-
-    public Set<Weapon> getWeapons() {
-        return weapons;
-    }
-
-    public void setWeapons(Set<Weapon> weapons) {
-        this.weapons = weapons;
     }
 }
