@@ -3,35 +3,34 @@ package com.perscholas.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
-public class Character implements Serializable {
+public class userCharacter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int characterId;
-    String name;
-    int level;
-    String ancestry;
-    String socialClass;
-    String background;
-    String classProfession;
-    int health;
-    int speed;
-    int defense;
-    int experience;
+    private String name;
+    private int level;
+    private String ancestry;
+    private String socialClass;
+    private String background;
+    private String classProfession;
+    private int health;
+    private int speed;
+    private int defense;
+    private int experience;
 
-    //@OneToOne(cascade = CascadeType.ALL)
-    //private CharacterAbilities characterAbilities;
+    @OneToOne(targetEntity = CharacterAbilities.class, cascade = CascadeType.ALL)
+    private CharacterAbilities characterAbilities;
 
-    //@OneToMany(targetEntity = Weapon.class, cascade = CascadeType.ALL)
-    //private List weaponsList;
+    @OneToMany(targetEntity = Weapon.class, cascade = CascadeType.ALL)
+    private List weaponsList;
 
-    public Character() {
+    public userCharacter() {
     }
 
-    public Character(String name, String ancestry, String classProfession) {
+    public userCharacter(String name, String ancestry, String classProfession) {
         this.name = name;
         this.ancestry = ancestry;
         this.classProfession = classProfession;

@@ -1,6 +1,6 @@
 package com.perscholas.creator;
 
-import com.perscholas.models.Character;
+import com.perscholas.models.userCharacter;
 import com.perscholas.models.CharacterAbilities;
 import com.perscholas.models.Weapon;
 import org.hibernate.Session;
@@ -9,12 +9,11 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
+
 
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
@@ -45,16 +44,16 @@ public class Main {
         ca2.setStrength((byte) 2);
         ca2.setDexterity((byte) 4);
 
-        Character character1 = new Character("Frodo", "Hobbit", "Rogue");
+        userCharacter userCharacter1 = new userCharacter("Frodo", "Hobbit", "Rogue");
         //character1.setWeaponsList(char1Weapons);
 
 
-        Character character2 = new Character("Legolas", "Elf", "Archer");
+        userCharacter userCharacter2 = new userCharacter("Legolas", "Elf", "Archer");
 
         session.save(ca1);
         session.save(ca2);
-        session.save(character1);
-        session.save(character2);
+        session.save(userCharacter1);
+        session.save(userCharacter2);
         t.commit();
 
     }

@@ -3,23 +3,22 @@ package com.perscholas.models;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/*@Entity
-@Table(name = "character_abilities")*/
+@Entity
+@Table(name = "character_abilities")
 public class CharacterAbilities implements Serializable {
-   /* @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Abilities_ID")*/
     private int AbilitiesId;
 
-    byte accuracy;
-    byte communication;
-    byte constitution;
-    byte dexterity;
-    byte fighting;
-    byte intelligence;
-    byte perception;
-    byte strength;
-    byte willpower;
+    int accuracy;
+    int communication;
+    int constitution;
+    int dexterity;
+    int fighting;
+    int intelligence;
+    int perception;
+    int strength;
+    int willpower;
 
     boolean isAccuracyProficient;
     boolean isCommunicationProficient;

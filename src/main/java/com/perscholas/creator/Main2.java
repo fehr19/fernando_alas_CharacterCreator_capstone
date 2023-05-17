@@ -1,6 +1,6 @@
 package com.perscholas.creator;
 
-import com.perscholas.models.Character;
+import com.perscholas.models.userCharacter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,13 +13,37 @@ public class Main2 {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
 
+        userCharacter userCharacter1 = new userCharacter("Frodo Baggins", "Hobbit", "Rogue");
+        userCharacter1.setSocialClass("Lower");
+        userCharacter1.setBackground("Tradesperson");
+        userCharacter1.setLevel(1);
+        userCharacter1.setHealth(18);
+        userCharacter1.setExperience(100);
+        userCharacter1.setDefense(13);
+        userCharacter1.setSpeed(12);
 
-        Character character1 = new Character("Frodo", "Hobbit", "Rogue");
+        userCharacter userCharacter2 = new userCharacter("Legolas", "Elf", "Archer");
+        userCharacter2.setSocialClass("Lower");
+        userCharacter2.setBackground("Soldier");
+        userCharacter2.setLevel(2);
+        userCharacter2.setHealth(48);
+        userCharacter2.setExperience(2000);
+        userCharacter2.setDefense(20);
+        userCharacter2.setSpeed(18);
 
-        Character character2 = new Character("Legolas", "Elf", "Archer");
+        userCharacter userCharacter3 = new userCharacter("Aankia", "Saurian", "Rogue");
+        userCharacter3.setSocialClass("Lower");
+        userCharacter3.setBackground("Performer");
+        userCharacter3.setLevel(2);
+        userCharacter3.setHealth(29);
+        userCharacter3.setExperience(100);
+        userCharacter3.setDefense(13);
+        userCharacter3.setSpeed(13);
 
-        session.save(character1);
-        session.save(character2);
+        session.save(userCharacter1);
+        session.save(userCharacter2);
+        session.save(userCharacter3);
+
         t.commit();
     }
 }

@@ -1,16 +1,16 @@
 package com.perscholas.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-/*@Entity*/
+@Entity
 public class Weapon implements Serializable {
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)*/
-    int id;
-    /*@ManyToOne
-    @JoinColumn(name = "Character_ID")*/
-    private Character character;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int weaponId;
     private String weaponGroup;
     private String weaponName;
     private String damage;
@@ -19,12 +19,12 @@ public class Weapon implements Serializable {
     //find a place to define ranged weapon fields
 
 
-    public Character getCharacter() {
-        return character;
+    public int getWeaponId() {
+        return weaponId;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setWeaponId(int weaponId) {
+        this.weaponId = weaponId;
     }
 
     public String getWeaponName() {
