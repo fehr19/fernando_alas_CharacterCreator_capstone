@@ -1,6 +1,6 @@
 package com.perscholas.creator;
 
-import com.perscholas.models.userCharacter;
+import com.perscholas.models.UserCharacter;
 import com.perscholas.models.CharacterAbilities;
 import com.perscholas.models.Weapon;
 import org.hibernate.Session;
@@ -44,11 +44,11 @@ public class Main {
         ca2.setStrength((byte) 2);
         ca2.setDexterity((byte) 4);
 
-        userCharacter userCharacter1 = new userCharacter("Frodo", "Hobbit", "Rogue");
+        UserCharacter userCharacter1 = new UserCharacter("Frodo", "Hobbit", "Rogue");
         //character1.setWeaponsList(char1Weapons);
 
 
-        userCharacter userCharacter2 = new userCharacter("Legolas", "Elf", "Archer");
+        UserCharacter userCharacter2 = new UserCharacter("Legolas", "Elf", "Archer");
 
         session.save(ca1);
         session.save(ca2);

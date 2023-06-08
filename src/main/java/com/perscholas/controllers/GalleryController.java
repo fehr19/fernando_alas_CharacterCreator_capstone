@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class GalleryController {
-    //GetMapping to specify URL, return to specify HTML file
+    //@GetMapping to specify URL, "return" to specify HTML file
 
-    @GetMapping("/")
+    @GetMapping("/artist")
     public String home(Model model) {
         return "home";
     }

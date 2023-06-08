@@ -1,15 +1,21 @@
 package com.perscholas.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 
 @Entity
-public class userCharacter implements Serializable {
+@Table(name = "use_characters")
+public class UserCharacter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int characterId;
+
+    @NotNull
+    @Column(name="character_name")
     private String name;
     private int level;
     private String ancestry;
@@ -27,10 +33,10 @@ public class userCharacter implements Serializable {
     @OneToMany(targetEntity = Weapon.class, cascade = CascadeType.ALL)
     private List weaponsList;
 
-    public userCharacter() {
+    public UserCharacter() {
     }
 
-    public userCharacter(String name, String ancestry, String classProfession) {
+    public UserCharacter(String name, String ancestry, String classProfession) {
         this.name = name;
         this.ancestry = ancestry;
         this.classProfession = classProfession;

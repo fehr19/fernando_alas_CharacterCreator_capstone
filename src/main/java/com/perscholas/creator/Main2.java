@@ -1,6 +1,6 @@
 package com.perscholas.creator;
 
-import com.perscholas.models.userCharacter;
+import com.perscholas.models.UserCharacter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,7 +13,7 @@ public class Main2 {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
 
-        userCharacter userCharacter1 = new userCharacter("Frodo Baggins", "Hobbit", "Rogue");
+        UserCharacter userCharacter1 = new UserCharacter("Frodo Baggins", "Hobbit", "Rogue");
         userCharacter1.setSocialClass("Lower");
         userCharacter1.setBackground("Tradesperson");
         userCharacter1.setLevel(1);
@@ -22,7 +22,7 @@ public class Main2 {
         userCharacter1.setDefense(13);
         userCharacter1.setSpeed(12);
 
-        userCharacter userCharacter2 = new userCharacter("Legolas", "Elf", "Archer");
+        UserCharacter userCharacter2 = new UserCharacter("Legolas", "Elf", "Archer");
         userCharacter2.setSocialClass("Lower");
         userCharacter2.setBackground("Soldier");
         userCharacter2.setLevel(2);
@@ -31,7 +31,7 @@ public class Main2 {
         userCharacter2.setDefense(20);
         userCharacter2.setSpeed(18);
 
-        userCharacter userCharacter3 = new userCharacter("Aankia", "Saurian", "Rogue");
+        UserCharacter userCharacter3 = new UserCharacter("Aankia", "Saurian", "Rogue");
         userCharacter3.setSocialClass("Lower");
         userCharacter3.setBackground("Performer");
         userCharacter3.setLevel(2);
