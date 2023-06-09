@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "use_characters")
+@Table(name = "user_characters")
 public class UserCharacter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +17,7 @@ public class UserCharacter implements Serializable {
     @NotNull
     @Column(name="character_name")
     private String name;
-    private int level;
+    private Integer level = null;
     private String ancestry;
     private String socialClass;
     private String background;
@@ -58,11 +58,11 @@ public class UserCharacter implements Serializable {
         this.name = name;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 

@@ -3,9 +3,11 @@ package com.perscholas.services;
 import com.perscholas.models.UserCharacter;
 import com.perscholas.repository.UserCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserCharacterServiceImpl implements UserCharacterService {
 
     private UserCharacterRepository userCharacterRepository;
@@ -19,21 +21,22 @@ public class UserCharacterServiceImpl implements UserCharacterService {
 
     @Override
     public List<UserCharacter> getAllUserCharacters() {
-        return null;
+        return userCharacterRepository.findAll();
     }
 
     @Override
     public void saveUserCharacter(UserCharacter userCharacter) {
+        userCharacterRepository.save(userCharacter);
 
     }
 
     @Override
-    public UserCharacter getUserCharacterById(int id) {
+    public UserCharacter getUserCharacterById(int characterId) {
         return null;
     }
 
     @Override
-    public void deleteUserCharacterById(int id) {
-
+    public void deleteUserCharacterById(int characterId) {
+        userCharacterRepository.deleteById(characterId);
     }
 }

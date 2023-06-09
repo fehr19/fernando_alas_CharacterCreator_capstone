@@ -5,8 +5,13 @@ import com.perscholas.services.UserCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class CharacterController {
@@ -22,17 +27,35 @@ public class CharacterController {
         this.userCharacterService = userCharacterService;
     }
 
-    @GetMapping("/listCharacters")
+    @GetMapping("/")
     public String getAllUserCharacters(Model model) {
         model.addAttribute("listCharacters", userCharacterService.getAllUserCharacters());
-        return "listCharacters";
+        return "home";
+    }
+
+    @GetMapping("/showNewCharacterForm")
+    public String showNewCharacterForm(Model model) {
+        UserCharacter userCharacter = new UserCharacter();
+        model.addAttribute("userCharacter", userCharacter);
+        return "newUserCharacter";
     }
 
     @GetMapping("/showUpdateCharacterForm/{characterId}")
-    public String showUpdateCharacterForm(@PathVariable long characterId, Model model) {
-        UserCharacter userCharacter = UserCharacterService.getUserCharacterById(characterId);
+    public String showUpdateCharacterForm(@PathVariable int characterId, Model model) {
+        UserCharacter userCharacter = userCharacterService.getUserCharacterById(characterId);
         model.addAttribute("userCharacter", userCharacter);
         return "updateCharacter";
+    }
+
+    @PostMapping("/saveCharacter")
+    public String saveCharacter(@ModelAttribute("userCharacter") @Valid UserCharacter userCharacter,
+                                BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "newUserCharacter";
+        }
+        userCharacterService.saveUserCharacter(userCharacter);
+        return "redirect:/";
     }
 
 }

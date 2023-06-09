@@ -9,6 +9,7 @@ public class FernandoAlasCharacterCreatorCapstoneApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext applicationContext = SpringApplication.run(FernandoAlasCharacterCreatorCapstoneApplication.class, args);
+
 	}
 
 }
