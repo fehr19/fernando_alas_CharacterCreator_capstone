@@ -3,18 +3,18 @@ package com.perscholas.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
+import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "user_characters")
-public class UserCharacter implements Serializable {
+@Table(name = "Player_Characters")
+public class Player {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int characterId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @NotNull
+    @Size(min=2)
     @Column(name="character_name")
     private String name;
     private Integer level = null;
@@ -27,27 +27,24 @@ public class UserCharacter implements Serializable {
     private int defense;
     private int experience;
 
-    @OneToOne(targetEntity = CharacterAbilities.class, cascade = CascadeType.ALL)
-    private CharacterAbilities characterAbilities;
+    @OneToOne(targetEntity = Abilities.class, cascade = CascadeType.ALL)
+    private Abilities abilities;
 
-    @OneToMany(targetEntity = Weapon.class, cascade = CascadeType.ALL)
-    private List weaponsList;
-
-    public UserCharacter() {
+    public Player() {
     }
 
-    public UserCharacter(String name, String ancestry, String classProfession) {
+    public Player(String name, String ancestry, String classProfession) {
         this.name = name;
         this.ancestry = ancestry;
         this.classProfession = classProfession;
     }
 
-    public int getCharacterId() {
-        return characterId;
+    public int getId() {
+        return id;
     }
 
-    public void setCharacterId(int characterId) {
-        this.characterId = characterId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -7,34 +7,39 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <title>Saved Characters</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
 
 <div class="container my-2">
 
-
     <h1>Saved Characters</h1>
 
     <a th:href="@{/showNewCharacterForm}"
-       class="btn btn-primary btn-sm mb-3"> Create Character</a>
+       class="btn btn-primary btn-sm mb-3">Create Character</a>
 
     <table class="table table-striped table-responsive-md">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Character Name</th>
             <th>Ancestry</th>
             <th>Level</th>
+            <th>Actions</th>
+
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="userCharacter : ${listCharacters}">
-            <td th:text="${userCharacter.name}"></td>
-            <td th:text="${userCharacter.ancestry}"></td>
-            <td th:text="${userCharacter.level}"></td>
-            <td><a th:href="@{/showUpdateCharacterForm}"></a>Update</td>
+        <tr th:each="Player : ${listUserCharacters}">
+            <td th:text="${Player.userCharacterId}"></td>
+            <td th:text="${Player.name}"></td>
+            <td th:text="${Player.ancestry}"></td>
+            <td th:text="${Player.level}"></td>
+            <td><a th:href="@{/showUpdateCharacterForm/{id}(id=${Player.userCharacterId})}"
+                   class="btn btn-primary">Update</a>
+            </td>
         </tr>
         </tbody>
 
@@ -43,5 +48,6 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

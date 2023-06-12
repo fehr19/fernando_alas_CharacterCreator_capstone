@@ -1,7 +1,7 @@
 package com.perscholas.controllers;
 
-import com.perscholas.models.UserCharacter;
-import com.perscholas.services.UserCharacterService;
+import com.perscholas.models.Player;
+import com.perscholas.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,47 +14,47 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-public class CharacterController {
+public class PlayerController {
 
-    private UserCharacterService userCharacterService;
+    private PlayerService playerService;
 
-    public CharacterController() {
+    public PlayerController() {
 
     }
 
     @Autowired
-    public CharacterController(UserCharacterService userCharacterService) {
-        this.userCharacterService = userCharacterService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
     }
 
     @GetMapping("/")
-    public String getAllUserCharacters(Model model) {
-        model.addAttribute("listCharacters", userCharacterService.getAllUserCharacters());
+    public String getAllPlayers(Model model) {
+        model.addAttribute("listPlayers", playerService.getAllPlayers());
         return "home";
     }
 
     @GetMapping("/showNewCharacterForm")
     public String showNewCharacterForm(Model model) {
-        UserCharacter userCharacter = new UserCharacter();
-        model.addAttribute("userCharacter", userCharacter);
+        Player Player = new Player();
+        model.addAttribute("userCharacter", Player);
         return "newUserCharacter";
     }
 
     @GetMapping("/showUpdateCharacterForm/{characterId}")
-    public String showUpdateCharacterForm(@PathVariable int characterId, Model model) {
-        UserCharacter userCharacter = userCharacterService.getUserCharacterById(characterId);
-        model.addAttribute("userCharacter", userCharacter);
+    public String showUpdateCharacterForm(@PathVariable int userCharacterId, Model model) {
+        Player Player = playerService.getPlayerById(userCharacterId);
+        model.addAttribute("userCharacter", Player);
         return "updateCharacter";
     }
 
     @PostMapping("/saveCharacter")
-    public String saveCharacter(@ModelAttribute("userCharacter") @Valid UserCharacter userCharacter,
+    public String saveCharacter(@ModelAttribute("userCharacter") @Valid Player Player,
                                 BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "newUserCharacter";
         }
-        userCharacterService.saveUserCharacter(userCharacter);
+        playerService.savePlayer(Player);
         return "redirect:/";
     }
 

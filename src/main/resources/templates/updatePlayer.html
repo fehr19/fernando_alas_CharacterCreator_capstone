@@ -24,7 +24,7 @@
 
         <div class="col bg-secondary-subtle">
 
-            <form action="#" th:action="@{/saveCharacter}" th:object="${character}" method="POST">
+            <form action="#" th:action="@{/savePlayer}" th:object="${Player}" method="POST">
 
                 <!-- Add hidden form field to handle update -->
                 <input type="hidden" th:field="*{id}" />

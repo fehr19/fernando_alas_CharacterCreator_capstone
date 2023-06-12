@@ -15,7 +15,7 @@
 <div class="container">
     <h1>Create a New Character</h1>
 
-    <form action="#" th:action="@{/saveCharacter}" th:object="${userCharacter}" method="POST">
+    <form action="#" th:action="@{/savePlayer}" th:object="${Player}" method="POST">
         <input type="text" th:field="*{name}" placeholder="Character Name" class="form-control mb-4 col-4" >
         <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
 
