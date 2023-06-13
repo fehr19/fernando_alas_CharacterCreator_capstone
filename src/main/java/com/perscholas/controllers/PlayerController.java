@@ -33,28 +33,28 @@ public class PlayerController {
         return "home";
     }
 
-    @GetMapping("/showNewCharacterForm")
-    public String showNewCharacterForm(Model model) {
-        Player Player = new Player();
-        model.addAttribute("userCharacter", Player);
-        return "newUserCharacter";
+    @GetMapping("/showNewPlayerForm")
+    public String showNewPlayerForm(Model model) {
+        Player player = new Player();
+        model.addAttribute("player", player);
+        return "newPlayer";
     }
 
-    @GetMapping("/showUpdateCharacterForm/{characterId}")
-    public String showUpdateCharacterForm(@PathVariable int userCharacterId, Model model) {
-        Player Player = playerService.getPlayerById(userCharacterId);
-        model.addAttribute("userCharacter", Player);
-        return "updateCharacter";
+    @GetMapping("/showUpdatePlayerForm/{id}")
+    public String showUpdateCharacterForm(@PathVariable int id, Model model) {
+        Player player = playerService.getPlayerById(id);
+        model.addAttribute("Player", player);
+        return "updatePlayer";
     }
 
-    @PostMapping("/saveCharacter")
-    public String saveCharacter(@ModelAttribute("userCharacter") @Valid Player Player,
+    @PostMapping("/savePlayer")
+    public String savePlayer(@ModelAttribute("player") @Valid Player player,
                                 BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "newUserCharacter";
+            return "newPlayer";
         }
-        playerService.savePlayer(Player);
+        playerService.savePlayer(player);
         return "redirect:/";
     }
 

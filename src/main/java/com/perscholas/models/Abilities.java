@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "character_abilities")
 public class Abilities implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     int accuracy;
