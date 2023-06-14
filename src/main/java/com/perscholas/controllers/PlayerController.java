@@ -43,7 +43,7 @@ public class PlayerController {
     @GetMapping("/showUpdatePlayerForm/{id}")
     public String showUpdateCharacterForm(@PathVariable int id, Model model) {
         Player player = playerService.getPlayerById(id);
-        model.addAttribute("Player", player);
+        model.addAttribute("player", player);
         return "updatePlayer";
     }
 
@@ -55,6 +55,12 @@ public class PlayerController {
             return "newPlayer";
         }
         playerService.savePlayer(player);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deletePlayer/{id}")
+    public String deletePlayer(@PathVariable int id) {
+        this.playerService.deletePlayerById(id);
         return "redirect:/";
     }
 

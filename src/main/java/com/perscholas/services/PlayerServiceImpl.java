@@ -32,11 +32,11 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player getPlayerById(int characterId) {
-        Optional<Player> optionalUserCharacter = playerRepository.findById(characterId);
+    public Player getPlayerById(int id) {
+        Optional<Player> optionalUserCharacter = playerRepository.findById(id);
         if (optionalUserCharacter.isPresent()) {
-            Player Player = optionalUserCharacter.get();
-            return Player;
+            Player player = optionalUserCharacter.get();
+            return player;
         }
         throw new PlayerNotFoundException();
     }

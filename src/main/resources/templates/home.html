@@ -22,22 +22,20 @@
     <table class="table table-striped table-responsive-md">
         <thead>
         <tr>
-            <!--<th>ID</th>-->
-            <th>Character Name</th>
+            <th>Character</th>
             <th>Ancestry</th>
-            <th>Level</th>
-            <th>Actions</th>
+            <th>Class</th>
+            <th></th>
 
         </tr>
         </thead>
 
         <tbody>
         <tr th:each="player : ${listPlayers}">
-            <!--<td th:text="${player.id"></td>-->
             <td th:text="${player.name}"></td>
             <td th:text="${player.ancestry}"></td>
-            <td th:text="${player.level}"></td>
-            <td><a th:href="@{/showUpdatePlayerForm/{id}(id=${id})}"
+            <td th:text="${player.classProfession}"></td>
+            <td><a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"
                    class="btn btn-primary">Update</a>
             </td>
         </tr>

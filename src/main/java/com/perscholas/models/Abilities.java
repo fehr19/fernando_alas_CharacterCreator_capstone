@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "character_abilities")
-public class Abilities implements Serializable {
+@Table
+public class Abilities {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
