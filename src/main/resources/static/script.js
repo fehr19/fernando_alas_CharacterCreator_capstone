@@ -28,3 +28,4 @@ decreaseButton1.addEventListener('click', () => {
   numberInput1.value--;
 });
 
+/* Need to write functions for the Abilities increase/decrease buttons */
