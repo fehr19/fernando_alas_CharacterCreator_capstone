@@ -1,6 +1,7 @@
 package com.perscholas.models;
 
 import com.sun.istack.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -27,6 +28,7 @@ public class Player {
     private int defense;
     private int experience;
 
+    @Autowired
     @OneToOne(targetEntity = Abilities.class, cascade = CascadeType.ALL)
     private Abilities abilities;
 

@@ -22,48 +22,6 @@
 
     <div class="row">
         <div id="homeColumn1" class="col bg-secondary-subtle">
-
-            <div class="card">
-
-                <!--Needs to be a FORM-->
-                <div class="card-body">
-
-                    <h5 id="name1" class="card-title">Assign ability points</h5>
-
-                    <p id="description1" class="card-text">
-
-                    <div>
-                    <label for="abilityPoints">Points Available:</label>
-                    <input type="text" id="abilityPoints" class="abilityPoints" value="13"/></div>
-                    <br>
-
-
-                    <!--Add thymeleaf to retrieve the values from the abilities-->
-                    <div>
-                        <label for="accuracy">Accuracy</label>
-                        <input id="accuracy" type="text" class="number" value="0"/>
-                        <button class="decrease"><</button>
-                        <button class="increase">></button>
-                    </div>
-                    <br>
-                    <div>
-                        <label for="communication">Communication</label>
-                        <input type="text" id="communication" class="number1" value="0"/>
-                        <button class="increase1"><</button>
-                        <button class="decrease1">></button>
-                    </div>
-
-                    <!--Add more abilities (9 total)-->
-                </div>
-                <!--Add Submit button-->
-                <!--End of FORM-->
-            </div>
-
-        </div>
-
-
-        <div id="homeColumn2" class="col bg-secondary-subtle">
-
             <div class="card">
 
                 <div class="card-body">
@@ -81,22 +39,67 @@
                 <div class="card-body">
                     <h5 class="card-title">Classes</h5>
                     <p class="card-text"> *--Placeholder for a carousel that
-                        will contain a card for one of each of 4 classes.--* </p>
+                        will contain a card for one of each of 4 classes with
+                        descriptions from step 5 in book ("If you want a...")
+                        and their primary and secondary abilities.--* </p>
                 </div>
             </div>
 
 
         </div>
 
+
+        <div id="homeColumn2" class="col bg-secondary-subtle">
+            <div class="card">
+
+                <!--Needs to be a FORM-->
+                <div class="card-body">
+
+                    <h5 id="name1" class="card-title">Assign ability points</h5>
+
+                    <p id="description1" class="card-text">
+
+                    <div>
+                        <label for="abilityPoints">Points Available:</label>
+                        <input type="text" id="abilityPoints" class="abilityPoints" value="13"/></div>
+                    <br>
+
+
+                    <!--Add thymeleaf to retrieve the values from the abilities-->
+                    <div>
+                        <label for="accuracy">Accuracy</label>
+                        <input id="accuracy" type="text" class="number" value="0"/>
+                        <button class="decrease"><</button>
+                        <button class="increase">></button>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="communication">Communication</label>
+                        <input type="text" id="communication" class="number1" value="0"/>
+                        <button class="decrease1"><</button>
+                        <button class="increase1">></button>
+                    </div>
+
+                    <!--Add more abilities (9 total)-->
+                </div>
+                <!--Add Submit button-->
+                <!--End of FORM-->
+            </div>
+
+
+        </div>
+
+    </div>
+
         <!--Would like to make these buttons opposite ends of each other-->
         <!--Need to add href after I figure out the order of the pages-->
 
         <div class="row">
             <div id="footer" class="col bg-secondary-subtle">
-                <button class="btn btn-secondary"><a class="text-light" href="">Back</a></button>
+                <button onclick="" class="btn btn-secondary"></a>Back</button>
                 <!--Add a page numbers: "2 of 7" -->
-                <!--Probably Don't need this button-->
-                <button class="btn btn-secondary"><a class="text-light" href="">Next</a></button>
+                <!--Probably Don't need this "Next" button-->
+                <button onclick="" class="btn btn-secondary">Next</button>
             </div>
         </div>
 
