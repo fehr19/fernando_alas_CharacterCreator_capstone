@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../static/script.js" defer></script>
 </head>
+
+<header>
+
+</header>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
 
 <div class="container text-center">
@@ -26,7 +30,7 @@
 
                 <div class="card-body">
                     <h5 class="card-title">About Point Assignment</h5>
-                    <p class="card-text">Assign Points as you see fit for your
+                    <p class="card-text">Assign Points to your
                         character. You may browse the Classes below to get an
                         idea of where to assign the points based on your desired
                         character class</p>
@@ -55,35 +59,38 @@
                 <!--Needs to be a FORM-->
                 <div class="card-body">
 
-                    <h5 id="name1" class="card-title">Assign ability points</h5>
-
-                    <p id="description1" class="card-text">
+                    <h5 id="name1" class="card-title">Points Remaining</h5>
 
                     <div>
-                        <label for="abilityPoints">Points Available:</label>
-                        <input type="text" id="abilityPoints" class="abilityPoints" value="13"/></div>
-                    <br>
-
-
-                    <!--Add thymeleaf to retrieve the values from the abilities-->
-                    <div>
-                        <label for="accuracy">Accuracy</label>
-                        <input id="accuracy" type="text" class="number" value="0"/>
-                        <button class="decrease"><</button>
-                        <button class="increase">></button>
+                        <h2 id="abilityPoints">13</h2>
                     </div>
                     <br>
-                    <div>
-                        <label for="communication">Communication</label>
-                        <input type="text" id="communication" class="number1" value="0"/>
-                        <button class="decrease1"><</button>
-                        <button class="increase1">></button>
-                    </div>
 
-                    <!--Add more abilities (9 total)-->
+                    <!--Is "PUT"                     -->
+                    <form action="#" th:action="@{/saveAbilities}" th:object="${abilities}" method="PUT">
+
+                        <!--Add thymeleaf to push the values to the abilities on submit-->
+                        <div>
+                            <label for="accuracy">Accuracy</label>
+                            <input th:field="*{accuracy}" id="accuracy" type="text" class="number" value="0"/>
+                            <button class="decrease"><</button>
+                            <button class="increase">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="communication">Communication</label>
+                            <input th:field="*{communication}" type="text" id="communication" class="number1"
+                                   value="0"/>
+                            <button class="decrease1"><</button>
+                            <button class="increase1">></button>
+                        </div>
+
+                        <!--Add more abilities (9 total)-->
+                    </form>
+
                 </div>
-                <!--Add Submit button-->
-                <!--End of FORM-->
+
+
             </div>
 
 
@@ -91,19 +98,19 @@
 
     </div>
 
-        <!--Would like to make these buttons opposite ends of each other-->
-        <!--Need to add href after I figure out the order of the pages-->
+    <!--Would like to make these buttons opposite ends of each other-->
+    <!--Need to add href after I figure out the order of the pages-->
 
-        <div class="row">
-            <div id="footer" class="col bg-secondary-subtle">
-                <button onclick="" class="btn btn-secondary"></a>Back</button>
-                <!--Add a page numbers: "2 of 7" -->
-                <!--Probably Don't need this "Next" button-->
-                <button onclick="" class="btn btn-secondary">Next</button>
-            </div>
+    <div class="row">
+        <div id="footer" class="col bg-secondary-subtle">
+            <button onclick="" class="btn btn-secondary"></a>Back</button>
+            <!--Add a page numbers: "2 of 7" -->
+            <!--"Next" button should be inactive until remaining points is zero-->
+            <button onclick="" class="btn btn-secondary">Next</button>
         </div>
-
     </div>
+
+</div>
 </div>
 </body>
 </html>
