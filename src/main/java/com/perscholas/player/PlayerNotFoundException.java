@@ -1,4 +1,4 @@
-package com.perscholas.services;
+package com.perscholas.player;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

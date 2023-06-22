@@ -1,6 +1,5 @@
-package com.perscholas.repository;
+package com.perscholas.player;
 
-import com.perscholas.models.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

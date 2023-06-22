@@ -1,7 +1,5 @@
-package com.perscholas.services;
+package com.perscholas.player;
 
-import com.perscholas.models.Player;
-import com.perscholas.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,16 +31,15 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player getPlayerById(int id) {
-        Optional<Player> optionalUserCharacter = playerRepository.findById(id);
-        if (optionalUserCharacter.isPresent()) {
-            Player player = optionalUserCharacter.get();
-            return player;
+        Optional<Player> optionalPlayer = playerRepository.findById(id);
+        if (optionalPlayer.isPresent()) {
+            return optionalPlayer.get();
         }
         throw new PlayerNotFoundException();
     }
 
     @Override
-    public void deletePlayerById(int characterId) {
-        playerRepository.deleteById(characterId);
+    public void deletePlayerById(int id) {
+        playerRepository.deleteById(id);
     }
 }

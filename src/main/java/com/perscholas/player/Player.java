@@ -1,5 +1,6 @@
-package com.perscholas.models;
+package com.perscholas.player;
 
+import com.perscholas.abilities.Abilities;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,7 +19,7 @@ public class Player {
     @Size(min=2)
     @Column(name="character_name")
     private String name;
-    private Integer level = null;
+    private Integer level = 1;
     private String ancestry;
     private String socialClass;
     private String background;
@@ -27,18 +28,15 @@ public class Player {
     private int speed;
     private int defense;
     private int experience;
+    private int armorRating;
 
     @Autowired
     @OneToOne(targetEntity = Abilities.class, cascade = CascadeType.ALL)
     private Abilities abilities;
 
-    public Player() {
-    }
 
-    public Player(String name, String ancestry, String classProfession) {
-        this.name = name;
-        this.ancestry = ancestry;
-        this.classProfession = classProfession;
+    public Player(Abilities abilities) {
+        this.abilities = abilities;
     }
 
     public int getId() {
@@ -127,5 +125,21 @@ public class Player {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    public int getArmorRating() {
+        return armorRating;
+    }
+
+    public void setArmorRating(int armorRating) {
+        this.armorRating = armorRating;
+    }
+
+    public Abilities getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Abilities abilities) {
+        this.abilities = abilities;
     }
 }

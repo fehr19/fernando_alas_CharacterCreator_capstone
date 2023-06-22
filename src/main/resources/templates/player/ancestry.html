@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,83 +29,87 @@ Wildfolk -->
 
     <div class="row">
         <div class="col bg-secondary-subtle">
-            <h1 class="text-dark">Step x: Ancestry</h1>
+            <h1 class="text-dark">Step 2: Ancestry</h1>
         </div>
     </div>
 
     <div class="row">
+
         <div id="homeColumn1" class="col bg-secondary-subtle">
 
             <div class="card">
 
                 <!--Need to add Carousel-->
                 <div class="card-body">
-                    <h5 class="card-title">Ancestry Name</h5>
-                    <p class="card-text"> *--Placeholder for a carousel that
-                        will contain a card for one of each of the 9 Ancestries.--* </p>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="draak" checked="">
-                        <label class="form-check-label" for="draak">
-                            Draak
-                        </label>
-                    </div>
+                    <h5 class="card-title">Choose an Ancestry</h5>
+                    <form id="ancestry-form" action="#" th:action="@{/saveAncestry}" th:object="${ancestry}"
+                          method="PUT">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" id="draak" value="Draak"
+                                   checked="">
+                            <label class="form-check-label" for="draak">
+                                Draak
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="dwarf">
-                        <label class="form-check-label" for="dwarf">
-                            Dwarf
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Dwarf" id="dwarf">
+                            <label class="form-check-label" for="dwarf">
+                                Dwarf
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="elf">
-                        <label class="form-check-label" for="elf">
-                            Elf
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Elf" id="elf">
+                            <label class="form-check-label" for="elf">
+                                Elf
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="gnome">
-                        <label class="form-check-label" for="gnome">
-                            Gnome
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Gnome" id="gnome">
+                            <label class="form-check-label" for="gnome">
+                                Gnome
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="goblin">
-                        <label class="form-check-label" for="goblin">
-                            Goblin
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Goblin" id="goblin">
+                            <label class="form-check-label" for="goblin">
+                                Goblin
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="halfling">
-                        <label class="form-check-label" for="halfling">
-                            Halfling
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Halfling" id="halfling">
+                            <label class="form-check-label" for="halfling">
+                                Halfling
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="human">
-                        <label class="form-check-label" for="human">
-                            Human
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Human" id="human">
+                            <label class="form-check-label" for="human">
+                                Human
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="orc">
-                        <label class="form-check-label" for="orc">
-                            Orc
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Orc" id="orc">
+                            <label class="form-check-label" for="orc">
+                                Orc
+                            </label>
+                        </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ancestry" id="wildfolk">
-                        <label class="form-check-label" for="wildfolk">
-                            Wildfolk
-                        </label>
-                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ancestry" value="Wildfolk" id="wildfolk">
+                            <label class="form-check-label" for="wildfolk">
+                                Wildfolk
+                            </label>
+                        </div>
+
+                    </form>
 
                 </div>
 
@@ -138,8 +142,8 @@ Wildfolk -->
 
             <button onclick="" class="btn btn-secondary"></a>Back</button>
             <!--Add a page numbers: "2 of 7" -->
-            <!--Probably Don't need this "Next" button-->
-            <button onclick="" class="btn btn-secondary">Next</button>
+            <!--"Next" button should be disabled until conditions met-->
+            <button type="submit" form="ancestry-form" class="btn btn-secondary">Next</button>
         </div>
     </div>
 

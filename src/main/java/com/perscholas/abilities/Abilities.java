@@ -1,7 +1,6 @@
-package com.perscholas.models;
+package com.perscholas.abilities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table

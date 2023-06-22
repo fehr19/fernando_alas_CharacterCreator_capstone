@@ -1,7 +1,6 @@
-package com.perscholas.controllers;
+package com.perscholas.player;
 
-import com.perscholas.models.Player;
-import com.perscholas.services.PlayerService;
+import com.perscholas.abilities.Abilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +34,7 @@ public class PlayerController {
 
     @GetMapping("/showNewPlayerForm")
     public String showNewPlayerForm(Model model) {
-        Player player = new Player();
+        Player player = new Player(new Abilities());
         model.addAttribute("player", player);
         return "newPlayer";
     }
