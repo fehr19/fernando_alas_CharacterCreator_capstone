@@ -18,7 +18,7 @@ public class Player {
     @NotNull
     @Size(min=2)
     @Column(name="character_name")
-    private Strin name;
+    private Sr name;
     private Integer level = 1;
     private String ancestry;
     private String socialClass;
