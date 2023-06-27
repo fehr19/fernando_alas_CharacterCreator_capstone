@@ -1,6 +1,6 @@
 package com.perscholas.player;
 
-import com.perscholas.abilities.Abilities;
+import com.perscholas.ancestry.Ancestry;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,32 +19,28 @@ public class Player {
     @Size(min=2)
     @Column(name="character_name")
     private String name;
-    private Integer level = 1;
-    private String ancestry;
+    private int level = 1;
+    private Ancestry ancestry;
     private String socialClass;
     private String background;
     private String classProfession;
     private int health;
-    private int speed;
     private int defense;
     private int experience;
     private int armorRating;
 
-    @Autowired
-    @OneToOne(targetEntity = Abilities.class, cascade = CascadeType.ALL)
-    private Abilities abilities;
+    // Abilities
+    int accuracy;
+    int communication;
+    int constitution;
+    int dexterity;
+    int fighting;
+    int intelligence;
+    int perception;
+    int strength;
+    int willpower;
 
-
-    public Player(Abilities abilities) {
-        this.abilities = abilities;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Player() {
     }
 
     public String getName() {
@@ -55,19 +51,19 @@ public class Player {
         this.name = name;
     }
 
-    public Integer getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
-    public String getAncestry() {
+    public Ancestry getAncestry() {
         return ancestry;
     }
 
-    public void setAncestry(String ancestry) {
+    public void setAncestry(Ancestry ancestry) {
         this.ancestry = ancestry;
     }
 
@@ -103,14 +99,6 @@ public class Player {
         this.health = health;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public int getDefense() {
         return defense;
     }
@@ -135,11 +123,75 @@ public class Player {
         this.armorRating = armorRating;
     }
 
-    public Abilities getAbilities() {
-        return abilities;
+    public int getAccuracy() {
+        return accuracy;
     }
 
-    public void setAbilities(Abilities abilities) {
-        this.abilities = abilities;
+    public void setAccuracy(int accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public int getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(int communication) {
+        this.communication = communication;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getFighting() {
+        return fighting;
+    }
+
+    public void setFighting(int fighting) {
+        this.fighting = fighting;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getPerception() {
+        return perception;
+    }
+
+    public void setPerception(int perception) {
+        this.perception = perception;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getWillpower() {
+        return willpower;
+    }
+
+    public void setWillpower(int willpower) {
+        this.willpower = willpower;
     }
 }

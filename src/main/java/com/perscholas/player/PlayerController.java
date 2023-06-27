@@ -34,7 +34,7 @@ public class PlayerController {
 
     @GetMapping("/showNewPlayerForm")
     public String showNewPlayerForm(Model model) {
-        Player player = new Player(new Abilities());
+        Player player = new Player();
         model.addAttribute("player", player);
         return "newPlayer";
     }

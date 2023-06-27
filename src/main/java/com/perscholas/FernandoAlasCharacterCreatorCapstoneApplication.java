@@ -20,7 +20,9 @@ public class FernandoAlasCharacterCreatorCapstoneApplication {
 			@Override
 			public void run(String... args) throws Exception {
 				System.out.println("Character Creator initialized");
+
 			}
+
 		};
 		return  commandLineRunner;
 	}
