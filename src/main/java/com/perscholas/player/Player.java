@@ -20,13 +20,13 @@ public class Player {
     @Column(name="character_name")
     private String name;
     private int level = 1;
+    @OneToOne(targetEntity = Ancestry.class, cascade = {CascadeType.ALL})
     private Ancestry ancestry;
     private String socialClass;
     private String background;
     private String classProfession;
     private int health;
     private int defense;
-    private int experience;
     private int armorRating;
 
     // Abilities
@@ -105,14 +105,6 @@ public class Player {
 
     public void setDefense(int defense) {
         this.defense = defense;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
     }
 
     public int getArmorRating() {

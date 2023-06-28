@@ -6,8 +6,20 @@ import javax.persistence.Id;
 @Entity
 public class Ancestry {
     @Id
-    String name;
-    String description;
-    private int speed;
+    private String ancestryName;
+    private String description;
+    private int speedMod;
+
+    public String getAncestryName() {
+        return ancestryName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getSpeedMod() {
+        return speedMod;
+    }
 
 }

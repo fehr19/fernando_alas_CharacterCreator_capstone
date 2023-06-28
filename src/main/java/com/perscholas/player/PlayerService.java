@@ -1,7 +1,10 @@
 package com.perscholas.player;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public interface PlayerService {
 
     List<Player> getAllPlayers();

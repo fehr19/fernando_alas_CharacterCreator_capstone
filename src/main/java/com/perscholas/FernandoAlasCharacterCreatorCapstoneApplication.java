@@ -1,5 +1,8 @@
 package com.perscholas;
 
+import com.perscholas.ancestry.Ancestry;
+import com.perscholas.ancestry.AncestryServiceImpl;
+import com.perscholas.player.Player;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +22,7 @@ public class FernandoAlasCharacterCreatorCapstoneApplication {
 		CommandLineRunner commandLineRunner = new CommandLineRunner() {
 			@Override
 			public void run(String... args) throws Exception {
-				System.out.println("Character Creator initialized");
+
 
 			}
 
