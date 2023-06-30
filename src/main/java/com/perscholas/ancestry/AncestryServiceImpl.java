@@ -16,6 +16,7 @@ public class AncestryServiceImpl implements AncestryService {
         this.ancestryRepository = ancestryRepository;
     }
 
+
     @Override
     public List<Ancestry> getAllAncestries() {
         return ancestryRepository.findAll();

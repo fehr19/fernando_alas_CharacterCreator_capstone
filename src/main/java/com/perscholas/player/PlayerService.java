@@ -9,7 +9,7 @@ public interface PlayerService {
 
     List<Player> getAllPlayers();
 
-    void savePlayer (Player Player);
+    void savePlayer (Player player);
 
     Player getPlayerById(int id);
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     private Player Player;
 

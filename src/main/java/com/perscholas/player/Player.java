@@ -19,7 +19,6 @@ public class Player {
     @Size(min=2)
     @Column(name="character_name")
     private String name;
-    private int level = 1;
     @OneToOne(targetEntity = Ancestry.class, cascade = {CascadeType.ALL})
     private Ancestry ancestry;
     private String socialClass;
@@ -49,14 +48,6 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     public Ancestry getAncestry() {
@@ -186,4 +177,5 @@ public class Player {
     public void setWillpower(int willpower) {
         this.willpower = willpower;
     }
+
 }
