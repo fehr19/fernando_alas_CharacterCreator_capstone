@@ -11,7 +11,6 @@ public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
 
-    private Player Player;
 
     @Autowired
     public PlayerServiceImpl(PlayerRepository playerRepository) {

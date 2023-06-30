@@ -1,5 +1,7 @@
 package com.perscholas.player;
 
+import com.perscholas.ancestry.AncestryService;
+import com.perscholas.ancestryBenefit.AncestryBenefitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +14,14 @@ import javax.validation.Valid;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final AncestryService ancestryService;
+    private final AncestryBenefitService ancestryBenefitService;
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, AncestryService ancestryService, AncestryBenefitService ancestryBenefitService) {
         this.playerService = playerService;
+        this.ancestryService = ancestryService;
+        this.ancestryBenefitService = ancestryBenefitService;
     }
 
     @GetMapping("/")
@@ -39,19 +45,6 @@ public class PlayerController {
         return "redirect:/";
     }
 
-
-    // START Character creation flow
-
-    // Step 1 name the character
-    @GetMapping("/showNewPlayerForm")
-    public String showNewPlayerForm(Model model) {
-        Player player = new Player();
-        model.addAttribute("player", player);
-        return "player/characterName";
-    }
-
-
-    // Step 2 assign ability points
     @PostMapping("/savePlayer")
     public String savePlayer(@ModelAttribute("player") @Valid Player player,
                              BindingResult bindingResult) {
@@ -60,15 +53,42 @@ public class PlayerController {
         }
         playerService.savePlayer(player);
         // Can this return "player/{id}/abilities?
+        return "home";
+    }
+
+    // START Character creation flow
+
+    // Step 1 Show character name form
+    @GetMapping("/showNewPlayerForm")
+    public String showNewPlayerForm(Model model) {
+        Player player = new Player();
+        model.addAttribute("player", player);
+        return "player/characterName";
+    }
+
+
+    // Step 2 save player and show abilities form
+    @PostMapping("/showAbilitiesForm")
+    public String showAbilitiesForm(@ModelAttribute("player") Player player) {
+        playerService.savePlayer(player);
         return "player/abilities";
     }
 
-    //Step 3 Choose Ancestry
-
+    //Step 3 save abilities and show ancestry Form
     @GetMapping("/showAncestryForm")
-    public String showAncestryForm(Model model) {
-        Player player = new Player();
-        model.addAttribute("player", player);
+    public String showAncestryForm(@ModelAttribute("player") Player player, Model model) {
+        playerService.savePlayer(player);
+        model.addAttribute("listAncestries", ancestryService.getAllAncestries());
+        return "player/ancestry";
+    }
+
+    // Step 4 save Ancestry and show ancestry abilities form
+    @PostMapping("/showAncestryBenefitForm")
+    public String showAncestryBenefitForm(@ModelAttribute("player") Player player, Model model) {
+        playerService.savePlayer(player);
+        model.addAttribute("listAncestryBenefits", ancestryBenefitService.getAllAncestryBenefits());
         return "player/ancestryBenefit";
     }
+
+
 }

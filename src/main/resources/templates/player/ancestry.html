@@ -12,18 +12,6 @@
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
 
-<!--This page will contain 8 Ancestry options
-In a carousel-->
-<!--
-Draak
-Dwarf
-Elf
-Gnome
-Goblin
-Halfling
-Human
-Orc
-Wildfolk -->
 
 <div class="container text-center">
 
@@ -33,87 +21,27 @@ Wildfolk -->
         </div>
     </div>
 
+
     <div class="row">
 
         <div id="homeColumn1" class="col bg-secondary-subtle">
 
             <div class="card">
-
-                <!--Need to add Carousel-->
                 <div class="card-body">
-
                     <h5 class="card-title">Choose an Ancestry</h5>
-                    <form id="ancestry-form" action="#" th:action="@{/saveAncestry}" th:object="${ancestry}"
-                          method="PUT">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" id="draak" value="Draak"
-                                   checked="">
-                            <label class="form-check-label" for="draak">
-                                Draak
-                            </label>
-                        </div>
+                    <form id="ancestry-form" action="#" th:action="@{/showAncestryBenefitForm}" th:object="${player}"
+                          method="POST">
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Dwarf" id="dwarf">
-                            <label class="form-check-label" for="dwarf">
-                                Dwarf
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Elf" id="elf">
-                            <label class="form-check-label" for="elf">
-                                Elf
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Gnome" id="gnome">
-                            <label class="form-check-label" for="gnome">
-                                Gnome
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Goblin" id="goblin">
-                            <label class="form-check-label" for="goblin">
-                                Goblin
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Halfling" id="halfling">
-                            <label class="form-check-label" for="halfling">
-                                Halfling
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Human" id="human">
-                            <label class="form-check-label" for="human">
-                                Human
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Orc" id="orc">
-                            <label class="form-check-label" for="orc">
-                                Orc
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ancestry" value="Wildfolk" id="wildfolk">
-                            <label class="form-check-label" for="wildfolk">
-                                Wildfolk
+                        <div class="form-check" th:each="ancestry : ${listAncestries}">
+                            <input class="form-check-input" type="radio" name="ancestry"
+                                   th:id="${ancestry.ancestryName}" th:value="${ancestry.ancestryName}">
+                            <label class="form-check-label" th:text="${ancestry.ancestryName}"
+                                   th:for="${ancestry.ancestryName}">
                             </label>
                         </div>
 
                     </form>
-
                 </div>
-
-
             </div>
 
         </div>
@@ -123,12 +51,29 @@ Wildfolk -->
 
             <div class="card">
 
-                <div class="card-body">
-                    <p class="card-text">Placeholder for benefits description</p>
-                </div>
-            </div>
 
+                <!--iterate through ancestry list to create accordion data, make sure to capture
+                speed-mod from ancestry to calculate speed for player-->
+                <div class="accordion" id="accordionExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Accordion Item #1
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
+                            <div class="accordion-body">
+                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+
     </div>
 
     <!--Would like to make these buttons opposite ends of each other-->
@@ -140,7 +85,6 @@ Wildfolk -->
 
             <button onclick="" class="btn btn-secondary"></a>Back</button>
             <!--Add a page numbers: "2 of 7" -->
-            <!--"Next" button should be disabled until conditions met-->
             <button type="submit" form="ancestry-form" class="btn btn-secondary">Next</button>
         </div>
     </div>
