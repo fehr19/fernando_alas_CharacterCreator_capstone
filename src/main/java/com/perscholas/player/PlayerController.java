@@ -68,7 +68,7 @@ public class PlayerController {
 
 
     // Step 2 save player and show abilities form
-    @PostMapping("/showAbilitiesForm")
+    @GetMapping("/showAbilitiesForm")
     public String showAbilitiesForm(@ModelAttribute("player") Player player) {
         playerService.savePlayer(player);
         return "player/abilities";

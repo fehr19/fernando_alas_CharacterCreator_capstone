@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" th:href="../../static/styles.css"/>
+        <link rel="stylesheet" type="text/css"/>
         <title>Abilities</title>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="../../static/script.js" defer></script>
@@ -61,6 +61,7 @@
 
                     <h5 id="name1" class="card-title">Points Remaining</h5>
 
+                    <!-- Ability points cannot go below zero-->
                     <div>
                         <h2 id="abilityPoints">13</h2>
                     </div>
@@ -69,7 +70,8 @@
                     <!--Is "PUT"                     -->
                     <form action="#" th:action="@{/showAncestryForm}" th:object="${player}" method="POST">
 
-                        <!--Add thymeleaf to push the values to the abilities on submit-->
+                        <!--Add thymeleaf to push the values to the abilities on submit
+                            abilities can not be negative-->
                         <div>
                             <label for="accuracy">Accuracy</label>
                             <input th:field="*{accuracy}" id="accuracy" type="text" class="number" value="0"/>
