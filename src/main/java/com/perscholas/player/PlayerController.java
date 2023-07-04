@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -70,9 +67,7 @@ public class PlayerController {
         return "player/characterName";
     }
 
-    // TODO Need to save newChar, and set abilities to same Char
-    // Right now, this is creating a character from the named one when saving abilities
-    // Step 2 save player and show abilities form
+    // Step 2 save character name
     @PostMapping("/saveNewCharacter")
     public String saveNewCharacter(@ModelAttribute("player") @Valid Player player,
                                    BindingResult bindingResult) {
@@ -84,45 +79,44 @@ public class PlayerController {
         return "redirect:/showAbilitiesForm/" + id;
     }
 
-
     // Step 3 show Abilities form
     @GetMapping("/showAbilitiesForm/{id}")
     public String showAbilitiesForm(@PathVariable(value = "id") int id, Model model) {
-        model.addAttribute("player", playerService.getPlayerById(id));
+        Player player = playerService.getPlayerById(id);
+        model.addAttribute("player", player);
         return "player/abilities";
     }
 
     //Step 4 save abilities and show ancestry Form
     @PostMapping("/saveAbilities")
-    public String saveAncestry(@ModelAttribute("player") Player player) {
-        int id = player.getId();
+    public String saveAbilities(@ModelAttribute("player") Player player) {
         playerService.savePlayer(player);
-        return "redirect:/showAncestriesForm/" + id;
+        return "redirect:/showAncestriesForm/" + player.getId();
     }
 
     @GetMapping("/showAncestriesForm/{id}")
-    public String showAncestryForm(@PathVariable(value = "id") int id, Model ancestryModel, Model model) {
-        ancestryModel.addAttribute("listAncestries", ancestryService.getAllAncestries());
+    public String showAncestryForm(@PathVariable(value = "id") int id, Model model) {
+        model.addAttribute("listAncestries", ancestryService.getAllAncestries());
         model.addAttribute("player", playerService.getPlayerById(id));
         return "player/ancestry";
     }
 
     // Step 4 calculate speed
     @GetMapping("/calculateSpeed/{speedMod}")
-    public String calculateSpeed(@PathVariable(value = "speedMod") int speedMod, Model model) {
-
+    public String calculateSpeed(@PathVariable(value = "speedMod") int speedMod,
+                                 @ModelAttribute Player player) {
         //Calculate Speed
-        //player.setSpeed(ancestryService.calculateSpeed(player, speedMod));
-        return "";
+        int speed = ancestryService.calculateSpeed(player, speedMod);
+        return "redirect:/saveAncestry/" + speed;
     }
 
     // Step 4 save Ancestry and show ancestry abilities form
-    @PostMapping("/saveAncestry/{speedMod}")
-    public String saveAncestry(@ModelAttribute("player") Player player, Model model) {
+    @GetMapping("/showAncestryBenefits")
+    public String showAncestryBenefits(@ModelAttribute("player") Player player, Model model) {
 
         // Save ancestry
         playerService.savePlayer(player);
-        return "redirect:/";
+        return "redirect:/player/ancestryBenefit";
     }
 
 

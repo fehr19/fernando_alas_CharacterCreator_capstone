@@ -24,6 +24,14 @@
 
     <div class="row">
         <div id="homeColumn1" class="col bg-secondary-subtle">
+            <div class="card" th:object="${player}">
+                <div class="card-body">
+                    <h6>Character Name</h6>
+                    <h5 class="card-title" th:text="*{name}"></h5>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -48,7 +56,7 @@
                                  data-bs-parent="#ancestryAccordion">
                                 <div class="accordion-body" th:text="${ancestry.description}">
                                 </div>
-                                <a th:href="@{/calculateSpeed/{speedMod}(speedMod=${ancestry.speedMod})}">
+                                <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}">
                                     <button class="btn btn-primary">Select</button>
                                 </a>
                             </div>

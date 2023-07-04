@@ -34,7 +34,7 @@
         <tbody>
         <tr th:each="player : ${listPlayers}">
             <td th:text="${player.name}"></td>
-            <td th:text="${player.ancestry.ancestryName}"></td>
+            <td th:text="${player.ancestry}"></td>
             <td th:text="${player.classProfession}"></td>
             <td th:text="${player.accuracy}"></td>
             <td><a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"

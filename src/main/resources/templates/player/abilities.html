@@ -66,20 +66,29 @@
 
                     <form id="abilitiesForm" action="#" th:action="@{/saveAbilities}" th:object="${player}"
                           method="POST">
+                        <input type="hidden" th:field="*{id}" />
+                        <input type="hidden" th:field="*{name}" />
+                        <input type="hidden" th:field="*{ancestry}" />
+                        <input type="hidden" th:field="*{socialClass}" />
+                        <input type="hidden" th:field="*{background}" />
+                        <input type="hidden" th:field="*{classProfession}" />
+                        <input type="hidden" th:field="*{health}" />
+                        <input type="hidden" th:field="*{defense}" />
+                        <input type="hidden" th:field="*{speed}" />
+
 
                         <!--Add thymeleaf to push the values to the abilities on submit
                             abilities can not be negative-->
                         <div>
                             <label for="accuracy">Accuracy</label>
-                            <input th:field="*{accuracy}" id="accuracy" type="text" class="number" value="0"/>
+                            <input th:field="*{accuracy}" id="accuracy" type="text" class="number"/>
                             <button class="decrease"><</button>
                             <button class="increase">></button>
                         </div>
                         <br>
                         <div>
                             <label for="communication">Communication</label>
-                            <input th:field="*{communication}" type="text" id="communication" class="number1"
-                                   value="0"/>
+                            <input th:field="*{communication}" type="text" id="communication" class="number1"/>
                             <button class="decrease1"><</button>
                             <button class="increase1">></button>
                         </div>
