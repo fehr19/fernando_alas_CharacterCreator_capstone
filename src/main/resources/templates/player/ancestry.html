@@ -23,9 +23,7 @@
 
 
     <div class="row">
-
         <div id="homeColumn1" class="col bg-secondary-subtle">
-
 
         </div>
 
@@ -50,6 +48,9 @@
                                  data-bs-parent="#ancestryAccordion">
                                 <div class="accordion-body" th:text="${ancestry.description}">
                                 </div>
+                                <a th:href="@{/calculateSpeed/{speedMod}(speedMod=${ancestry.speedMod})}">
+                                    <button class="btn btn-primary">Select</button>
+                                </a>
                             </div>
                         </div>
 
@@ -74,13 +75,12 @@
         <div id="footer" class="col bg-secondary-subtle">
 
 
-            <button onclick="" class="btn btn-secondary"></a>Back</button>
+            <button onclick="" class="btn btn-secondary">Back</button>
             <!--Add a page numbers: "2 of 7" -->
-            <button type="submit" form="ancestry-form" class="btn btn-secondary">Next</button>
+            <button class="btn btn-secondary">Next</button>
         </div>
     </div>
 
-</div>
 </div>
 
 

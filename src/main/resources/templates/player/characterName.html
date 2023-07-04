@@ -12,10 +12,10 @@
 </head>
 <body class="p-3 m-0 border-0 bg-secondary">
 
-<div class="container">
+<div class="container text-center">
   <h1>Create a New Character</h1>
 
-  <form action="#" th:action="@{/showAbilitiesForm}" th:object="${player}" method="POST">
+  <form action="#" th:action="@{/saveNewCharacter}" th:object="${player}" method="POST">
     <input type="text" th:field="*{name}" placeholder="Character Name" class="form-control mb-4 col-4" >
     <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
 

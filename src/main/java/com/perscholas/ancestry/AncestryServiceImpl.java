@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class AncestryServiceImpl implements AncestryService {
 
-    private AncestryRepository ancestryRepository;
+    private final AncestryRepository ancestryRepository;
 
     @Autowired
     public AncestryServiceImpl(AncestryRepository ancestryRepository) {
@@ -28,8 +28,8 @@ public class AncestryServiceImpl implements AncestryService {
      or various methods by ancestry in this class
      maybe pass the ancestry id to find the int modifier*/
     @Override
-    public int calculateSpeed(Player player, Ancestry ancestry) {
-        return ancestry.getSpeedMod() + player.getDexterity();
+    public int calculateSpeed(Player player, int speedMod) {
+        return speedMod + player.getDexterity();
     }
 
 

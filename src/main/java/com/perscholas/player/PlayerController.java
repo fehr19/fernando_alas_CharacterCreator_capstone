@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
@@ -24,12 +27,12 @@ public class PlayerController {
         this.ancestryBenefitService = ancestryBenefitService;
     }
 
+    // Player list
     @GetMapping("/")
     public String getAllPlayers(Model model) {
         model.addAttribute("listPlayers", playerService.getAllPlayers());
         return "home";
     }
-
 
 
     @GetMapping("/showUpdatePlayerForm/{id}")
@@ -45,18 +48,19 @@ public class PlayerController {
         return "redirect:/";
     }
 
-    @PostMapping("/savePlayer")
+    // Change this to update player, need to pass id
+    @PostMapping("/updatePlayer")
     public String savePlayer(@ModelAttribute("player") @Valid Player player,
                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            // need to change to reload character that was being updated
             return "player/characterName";
         }
         playerService.savePlayer(player);
-        // Can this return "player/{id}/abilities?
-        return "home";
+        return "redirect:/";
     }
 
-    // START Character creation flow
+    // START Character creation flow --------------------------------->
 
     // Step 1 Show character name form
     @GetMapping("/showNewPlayerForm")
@@ -66,28 +70,59 @@ public class PlayerController {
         return "player/characterName";
     }
 
-
+    // TODO Need to save newChar, and set abilities to same Char
+    // Right now, this is creating a character from the named one when saving abilities
     // Step 2 save player and show abilities form
-    @GetMapping("/showAbilitiesForm")
-    public String showAbilitiesForm(@ModelAttribute("player") Player player) {
+    @PostMapping("/saveNewCharacter")
+    public String saveNewCharacter(@ModelAttribute("player") @Valid Player player,
+                                   BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "player/characterName";
+        }
         playerService.savePlayer(player);
+        int id = player.getId();
+        return "redirect:/showAbilitiesForm/" + id;
+    }
+
+
+    // Step 3 show Abilities form
+    @GetMapping("/showAbilitiesForm/{id}")
+    public String showAbilitiesForm(@PathVariable(value = "id") int id, Model model) {
+        model.addAttribute("player", playerService.getPlayerById(id));
         return "player/abilities";
     }
 
-    //Step 3 save abilities and show ancestry Form
-    @GetMapping("/showAncestryForm")
-    public String showAncestryForm(@ModelAttribute("player") Player player, Model model) {
+    //Step 4 save abilities and show ancestry Form
+    @PostMapping("/saveAbilities")
+    public String saveAncestry(@ModelAttribute("player") Player player) {
+        int id = player.getId();
         playerService.savePlayer(player);
-        model.addAttribute("listAncestries", ancestryService.getAllAncestries());
+        return "redirect:/showAncestriesForm/" + id;
+    }
+
+    @GetMapping("/showAncestriesForm/{id}")
+    public String showAncestryForm(@PathVariable(value = "id") int id, Model ancestryModel, Model model) {
+        ancestryModel.addAttribute("listAncestries", ancestryService.getAllAncestries());
+        model.addAttribute("player", playerService.getPlayerById(id));
         return "player/ancestry";
     }
 
+    // Step 4 calculate speed
+    @GetMapping("/calculateSpeed/{speedMod}")
+    public String calculateSpeed(@PathVariable(value = "speedMod") int speedMod, Model model) {
+
+        //Calculate Speed
+        //player.setSpeed(ancestryService.calculateSpeed(player, speedMod));
+        return "";
+    }
+
     // Step 4 save Ancestry and show ancestry abilities form
-    @PostMapping("/showAncestryBenefitForm")
-    public String showAncestryBenefitForm(@ModelAttribute("player") Player player, Model model) {
+    @PostMapping("/saveAncestry/{speedMod}")
+    public String saveAncestry(@ModelAttribute("player") Player player, Model model) {
+
+        // Save ancestry
         playerService.savePlayer(player);
-        model.addAttribute("listAncestryBenefits", ancestryBenefitService.getAllAncestryBenefits());
-        return "player/ancestryBenefit";
+        return "redirect:/";
     }
 
 

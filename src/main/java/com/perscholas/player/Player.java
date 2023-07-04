@@ -19,14 +19,13 @@ public class Player {
     @Size(min=2)
     @Column(name="character_name")
     private String name;
-    @OneToOne(targetEntity = Ancestry.class, cascade = {CascadeType.ALL})
-    private Ancestry ancestry;
+    private String ancestry;
     private String socialClass;
     private String background;
     private String classProfession;
     private int health;
     private int defense;
-    private int armorRating;
+    private int speed;
 
     // Abilities
     int accuracy;
@@ -54,11 +53,11 @@ public class Player {
         this.name = name;
     }
 
-    public Ancestry getAncestry() {
+    public String getAncestry() {
         return ancestry;
     }
 
-    public void setAncestry(Ancestry ancestry) {
+    public void setAncestry(String ancestry) {
         this.ancestry = ancestry;
     }
 
@@ -102,12 +101,12 @@ public class Player {
         this.defense = defense;
     }
 
-    public int getArmorRating() {
-        return armorRating;
+    public int getSpeed() {
+        return speed;
     }
 
-    public void setArmorRating(int armorRating) {
-        this.armorRating = armorRating;
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public int getAccuracy() {
