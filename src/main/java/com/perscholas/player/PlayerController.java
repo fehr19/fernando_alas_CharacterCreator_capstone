@@ -88,12 +88,13 @@ public class PlayerController {
     }
 
     //Step 4 save abilities and show ancestry Form
-    @PostMapping("/saveAbilities")
+    @PutMapping("/saveAbilities")
     public String saveAbilities(@ModelAttribute("player") Player player) {
         playerService.savePlayer(player);
         return "redirect:/showAncestriesForm/" + player.getId();
     }
 
+    // Step 5 Show Ancestry options
     @GetMapping("/showAncestriesForm/{id}")
     public String showAncestryForm(@PathVariable(value = "id") int id, Model model) {
         model.addAttribute("listAncestries", ancestryService.getAllAncestries());
@@ -101,16 +102,25 @@ public class PlayerController {
         return "player/ancestry";
     }
 
-    // Step 4 calculate speed
-    @GetMapping("/calculateSpeed/{speedMod}")
-    public String calculateSpeed(@PathVariable(value = "speedMod") int speedMod,
+    /* Need to write a Rest Controller to retrieve speed from ancestry and then return the
+    * speed to calculate speed mod with player dexterity? Maybe create an ancestry controller
+    * to handle the request and then return to the player controller? */
+
+
+    // Step 6 Save Ancestry how to set, getter is not correct?
+    @PostMapping("/saveAncestry/{ancestryName}")
+    public String calculateSpeed(@PathVariable(value = "ancestryName") String ancestryName,
                                  @ModelAttribute Player player) {
-        //Calculate Speed
-        int speed = ancestryService.calculateSpeed(player, speedMod);
-        return "redirect:/saveAncestry/" + speed;
+        player.setAncestry(ancestryName);
+        playerService.savePlayer(player);
+
+        return "redirect:/saveAncestry";
     }
 
-    // Step 4 save Ancestry and show ancestry abilities form
+    /* After saving ancestry, need to write a Rest Controller to retrieve speed from
+    ancestry and then return the speed to calculate speed mod with player dexterity? */
+
+    // Step 7 save Ancestry and show ancestry abilities form
     @GetMapping("/showAncestryBenefits")
     public String showAncestryBenefits(@ModelAttribute("player") Player player, Model model) {
 

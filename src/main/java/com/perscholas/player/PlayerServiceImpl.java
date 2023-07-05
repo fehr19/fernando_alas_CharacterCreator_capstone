@@ -31,8 +31,7 @@ public class PlayerServiceImpl implements PlayerService {
     public Player getPlayerById(int id) {
         Optional<Player> optionalPlayer = playerRepository.findById(id);
         if (optionalPlayer.isPresent()) {
-            Player player = optionalPlayer.get();
-            return player;
+            return optionalPlayer.get();
         }
         throw new PlayerNotFoundException();
     }
