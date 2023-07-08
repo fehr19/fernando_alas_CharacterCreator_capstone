@@ -107,23 +107,26 @@ public class PlayerController {
     * to handle the request and then return to the player controller? */
 
 
-    // Step 6 Save Ancestry how to set, getter is not correct?
-    @PostMapping("/saveAncestry")
-    public String calculateSpeed(@ModelAttribute("player") Player player) {
+    // TODO Step 6 Save Ancestry how to set from the accordion?
+    @PostMapping("/saveAncestry/{ancestry}")
+    public String saveAncestry(@ModelAttribute("player") Player player) {
         playerService.savePlayer(player);
-        return "redirect:/showAncestryBenefits";
+        return "redirect:/showAncestryBenefits/" + player.getId();
     }
 
-    /* After saving ancestry, need to write a Rest Controller to retrieve speed from
-    ancestry and then return the speed to calculate speed mod with player dexterity? */
 
-    // Step 7 save Ancestry and show ancestry abilities form
-    @GetMapping("/showAncestryBenefits")
-    public String showAncestryBenefits(@ModelAttribute("player") Player player, Model model) {
-
+    // Step 7 TODO save Ancestry and show ancestry abilities form
+    @GetMapping("/showAncestryBenefits/{id}")
+    public String showAncestryBenefits(@PathVariable(value = "id") int id, Model model) {
+        model.addAttribute("player", playerService.getPlayerById(id));
+        //Should show a table of benefits, user must pick 2
 
         return "redirect:/player/ancestryBenefit";
     }
 
 
+    /*Still need to do:
+    * - TODO choose background and social class
+    * - TODO choose class
+    * - TODO calculate defense, speed and health*/
 }

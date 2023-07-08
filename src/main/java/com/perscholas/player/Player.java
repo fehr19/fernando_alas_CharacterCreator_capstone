@@ -16,7 +16,7 @@ public class Player {
     private int id;
 
     @NotNull
-    @Size(min=2)
+    @Size(min=2, message="Name must be at least 2 characters long")
     @Column(name="character_name")
     private String name;
     private String ancestry;

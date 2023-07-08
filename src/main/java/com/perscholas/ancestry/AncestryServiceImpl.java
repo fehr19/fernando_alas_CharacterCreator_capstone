@@ -23,11 +23,10 @@ public class AncestryServiceImpl implements AncestryService {
     }
 
     @Override
-    public int getSpeedByName(String name) {
+    public int calculateSpeedByName(int dexterity, String name) {
         Ancestry ancestry = ancestryRepository.findSpeedModByAncestryName(name);
-        return ancestry.getSpeedMod();
+        return ancestry.getSpeedMod() + dexterity;
     }
-
 
 
 }
