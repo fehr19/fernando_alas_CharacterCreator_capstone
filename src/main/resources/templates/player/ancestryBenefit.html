@@ -20,15 +20,18 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" th:object="${player}">
 
         <div id="homeColumn1" class="col bg-secondary-subtle">
 
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">Chosen Ancestry Name</h5>
-                    <p class="card-text">Character Info</p>
+                    Character Name
+                    <h5 class="card-title" th:text="*{name}"></h5>
+                    Class
+                    <h6 class="card-text" th:text="*{ancestry}"></h6>
+
                 </div>
 
             </div>

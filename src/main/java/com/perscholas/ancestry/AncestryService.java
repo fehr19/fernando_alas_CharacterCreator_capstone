@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AncestryService {
     List<Ancestry> getAllAncestries();
-    int calculateSpeed(Player player, int speedMod);
+    int getSpeedByName(String name);
 
 
 

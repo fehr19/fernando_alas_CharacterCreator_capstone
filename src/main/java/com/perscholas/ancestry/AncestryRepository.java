@@ -7,4 +7,7 @@ import java.util.List;
 public interface AncestryRepository extends JpaRepository<Ancestry, Integer> {
 
 
+    // method to find speedMod by ancestry name
+    Ancestry findSpeedModByAncestryName(String ancestryName);
+
 }

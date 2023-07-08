@@ -24,7 +24,7 @@ public class PlayerController {
         this.ancestryBenefitService = ancestryBenefitService;
     }
 
-    // Player list
+    // Display Player list
     @GetMapping("/")
     public String getAllPlayers(Model model) {
         model.addAttribute("listPlayers", playerService.getAllPlayers());
@@ -32,6 +32,7 @@ public class PlayerController {
     }
 
 
+    // Update player, will change later to run through the steps
     @GetMapping("/showUpdatePlayerForm/{id}")
     public String showUpdateCharacterForm(@PathVariable int id, Model model) {
         Player player = playerService.getPlayerById(id);
@@ -57,7 +58,7 @@ public class PlayerController {
         return "redirect:/";
     }
 
-    // START Character creation flow --------------------------------->
+    // --------------------------START Character creation flow --------------------------------->
 
     // Step 1 Show character name form
     @GetMapping("/showNewPlayerForm")
@@ -75,8 +76,7 @@ public class PlayerController {
             return "player/characterName";
         }
         playerService.savePlayer(player);
-        int id = player.getId();
-        return "redirect:/showAbilitiesForm/" + id;
+        return "redirect:/showAbilitiesForm/" + player.getId();
     }
 
     // Step 3 show Abilities form
@@ -87,8 +87,8 @@ public class PlayerController {
         return "player/abilities";
     }
 
-    //Step 4 save abilities and show ancestry Form
-    @PutMapping("/saveAbilities")
+    //Step 4 save abilities and redirect to ancestry Form handler
+    @PostMapping("/saveAbilities")
     public String saveAbilities(@ModelAttribute("player") Player player) {
         playerService.savePlayer(player);
         return "redirect:/showAncestriesForm/" + player.getId();
@@ -108,13 +108,10 @@ public class PlayerController {
 
 
     // Step 6 Save Ancestry how to set, getter is not correct?
-    @PostMapping("/saveAncestry/{ancestryName}")
-    public String calculateSpeed(@PathVariable(value = "ancestryName") String ancestryName,
-                                 @ModelAttribute Player player) {
-        player.setAncestry(ancestryName);
+    @PostMapping("/saveAncestry")
+    public String calculateSpeed(@ModelAttribute("player") Player player) {
         playerService.savePlayer(player);
-
-        return "redirect:/saveAncestry";
+        return "redirect:/showAncestryBenefits";
     }
 
     /* After saving ancestry, need to write a Rest Controller to retrieve speed from
@@ -124,8 +121,7 @@ public class PlayerController {
     @GetMapping("/showAncestryBenefits")
     public String showAncestryBenefits(@ModelAttribute("player") Player player, Model model) {
 
-        // Save ancestry
-        playerService.savePlayer(player);
+
         return "redirect:/player/ancestryBenefit";
     }
 

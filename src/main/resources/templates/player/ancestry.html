@@ -21,62 +21,79 @@
         </div>
     </div>
 
+    <form id="ancestryForm" action="#" th:action="@{/saveAncestry}" th:object="${player}"
+          method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{accuracy}" />
+        <input type="hidden" th:field="*{communication}" />
+        <input type="hidden" th:field="*{constitution}" />
+        <input type="hidden" th:field="*{dexterity}" />
+        <input type="hidden" th:field="*{fighting}" />
+        <input type="hidden" th:field="*{intelligence}" />
+        <input type="hidden" th:field="*{perception}" />
+        <input type="hidden" th:field="*{strength}" />
+        <input type="hidden" th:field="*{willpower}" />
+    <div class="row">
 
-    <div class="row" th:object="${player}">
-        <div id="homeColumn1" class="col bg-secondary-subtle">
-            <div class="card">
-                <div class="card-body">
-                    <h6>Character Name</h6>
-                    <h5 class="card-title" th:text="*{name}"></h5>
 
-                </div>
+            <div id="homeColumn1" class="col bg-secondary-subtle">
 
-            </div>
-
-        </div>
-
-
-        <div id="homeColumn2" class="col-6 bg-secondary-subtle">
-
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Choose an Ancestry</h5>
-
-                    <div class="accordion" id="ancestryAccordion">
-
-                        <form>
-                            <div class="accordion-item" th:each="ancestry : ${listAncestries}">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            th:text="${ancestry.ancestryName}"
-                                            th:data-bs-target="${'#' + ancestry.ancestryName}"
-                                            aria-expanded="false" th:aria-controls="${ancestry.ancestryName}">
-                                    </button>
-                                </h2>
-                                <div th:id="${ancestry.ancestryName}" class="accordion-collapse collapse"
-                                     data-bs-parent="#ancestryAccordion">
-                                    <div class="accordion-body" th:text="${ancestry.description}">
-                                    </div>
-                                    <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}">
-                                        <button type="submit" class="btn btn-primary">Select</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-
+                <div class="card">
+                    <div class="card-body">
+                        Character Name
+                        <h5 class="card-title" th:text="*{name}"></h5>
                     </div>
 
                 </div>
+
+
             </div>
 
 
-        </div>
+            <div id="homeColumn2" class="col-6 bg-secondary-subtle">
 
-        <div id="homeColumn3" class="col bg-secondary-subtle">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Choose an Ancestry</h5>
+
+                        <div class="accordion" id="ancestryAccordion">
+                                <div class="accordion-item" th:each="ancestry : ${listAncestries}">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                th:text="${ancestry.ancestryName}"
+                                                th:data-bs-target="${'#' + ancestry.ancestryName}"
+                                                aria-expanded="false" th:aria-controls="${ancestry.ancestryName}">
+                                        </button>
+                                    </h2>
+                                    <div th:id="${ancestry.ancestryName}" class="accordion-collapse collapse"
+                                         data-bs-parent="#ancestryAccordion">
+                                        <div class="accordion-body" th:text="${ancestry.description}">
+                                        </div>
+
+                                        <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}"
+                                           class="btn btn-primary">Select</a>
 
 
-        </div>
+                                    </div>
+                                </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="homeColumn3" class="col bg-secondary-subtle">
+
+
+            </div>
+
     </div>
+    </form>
 
     <!--Would like to make these buttons opposite ends of each other-->
     <!--Need to add href after I figure out the order of the pages-->

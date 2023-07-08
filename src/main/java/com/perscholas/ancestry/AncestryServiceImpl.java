@@ -22,15 +22,12 @@ public class AncestryServiceImpl implements AncestryService {
         return ancestryRepository.findAll();
     }
 
-
-    /* this varies by Ancestry, need to find a way to
-     make that possible, either different AncestryServiceImpl,
-     or various methods by ancestry in this class
-     maybe pass the ancestry id to find the int modifier*/
     @Override
-    public int calculateSpeed(Player player, int speedMod) {
-        return speedMod + player.getDexterity();
+    public int getSpeedByName(String name) {
+        Ancestry ancestry = ancestryRepository.findSpeedModByAncestryName(name);
+        return ancestry.getSpeedMod();
     }
+
 
 
 }
