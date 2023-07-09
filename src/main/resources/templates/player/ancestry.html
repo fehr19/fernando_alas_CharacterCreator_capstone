@@ -33,6 +33,7 @@
         <input type="hidden" th:field="*{perception}" />
         <input type="hidden" th:field="*{strength}" />
         <input type="hidden" th:field="*{willpower}" />
+
     <div class="row">
 
 
@@ -69,6 +70,8 @@
                                     <div th:id="${ancestry.ancestryName}" class="accordion-collapse collapse"
                                          data-bs-parent="#ancestryAccordion">
                                         <div class="accordion-body" th:text="${ancestry.description}">
+                                            <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}"
+                                               class="btn btn-primary">Select</a>
                                         </div>
 
                                         <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}"

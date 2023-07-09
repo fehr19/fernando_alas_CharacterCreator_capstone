@@ -28,8 +28,7 @@
 
 
                 <div class="card-body">
-                    <h5 class="card-title">Chosen Ancestry Name</h5>
-                    <p class="card-text">Character info</p>
+                    <h5 class="card-title" th:text="*{name}"></h5>
                 </div>
 
 
@@ -38,21 +37,107 @@
         </div>
 
 
-        <div id="homeColumn2" class="col bg-secondary-subtle">
+        <div id="homeColumn2" class="col-6 bg-secondary-subtle">
 
             <div class="card">
 
 
                 <div class="card-body">
-                    <p class="card-text">Placeholder for carousel of
-                        Social Class (4 cards, each with dice roll info
-                        and description)</p>
+
+                    <div class="accordion" id="classAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Outsider
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#classAccordion">
+                                <div class="accordion-body">
+                                    <p>Strangers, outcasts, or vagabonds who may have had a home
+                                        at some time, but now find themselves in new lands. They
+                                        own nothing but what they can carry and often make a living
+                                        doing whatever they must to survive. Outsiders can be gruff
+                                        and off-putting, or open, gregarious, and willing to make
+                                        friends either in the hope of work or coin, or as part of a care-
+                                        free nature.</p>
+                                    <button class="btn btn-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Lower
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#classAccordion">
+                                <div class="accordion-body">
+                                    <p>Those who engage in backbreaking labor or work at jobs
+                                        that pay little more than room and board. It’s a hard life,
+                                        but during good times there’s usually work around if you’re
+                                        willing to put life and limb on the line. In bad times it’s a
+                                        scramble to survive, with nights spent sleeping in doorways
+                                        while looking for the next job.</p>
+                                    <button class="btn btn-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Middle
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#classAccordion">
+                                <div class="accordion-body">
+                                    <p>The lucky few who have well-paying jobs, or benefit from
+                                        families who can moderately support them. Some desperately
+                                        pursue money to support the overhead required by their busi-
+                                        ness. Others thrive by taking advantage of a populace that
+                                        wants what they have to offer. Families in the middle class
+                                        sometimes fail and fall into the lower class, while a small few
+                                        grow wealthy and successful enough to join the upper class.</p>
+                                    <button class="btn btn-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Upper
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#classAccordion">
+                                <div class="accordion-body">
+                                   <p>The wealthiest and most connected of all social classes, short
+                                       of the highest echelons of nobility in grand empires. People
+                                       from this class are rich, important, well-known, and often
+                                       consider themselves superior in every way. In addition to
+                                       their wealth, they often have rights not possessed by the other
+                                       classes, though a few will claim they have responsibilities or
+                                       gifts that entitle them to their privileges. Some, usually aristo-
+                                       crats consider even thinking about money vulgar, but others
+                                       make fortunes through shrewd business dealings.</p>
+                                    <button class="btn btn-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
+
+        <div id="homeColumn3" class="col bg-secondary-subtle">
+
+
+
+        </div>
     </div>
+
+
 
     <!--Would like to make these buttons opposite ends of each other-->
     <!--Need to add href after I figure out the order of the pages-->
@@ -66,7 +151,6 @@
         </div>
     </div>
 
-</div>
 </div>
 
 

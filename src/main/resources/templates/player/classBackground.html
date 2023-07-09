@@ -28,8 +28,12 @@
 
 
                 <div class="card-body">
-                    <h5 class="card-title">Chosen Ancestry Name</h5>
-                    <p class="card-text">Character info, Social Class</p>
+                    Character Name
+                    <h5 class="card-title" th:text="*{name}"></h5>
+                    Ancestry
+                    <h6 class="card-text" th:text="*{ancestry}"></h6>
+                    Social Class
+                    <h6 class="card-text" th:text="*{socialClass}"></h6>
                 </div>
 
 
@@ -38,7 +42,7 @@
         </div>
 
 
-        <div id="homeColumn2" class="col bg-secondary-subtle">
+        <div id="homeColumn2" class="col-6 bg-secondary-subtle">
 
             <div class="card">
 
@@ -50,6 +54,10 @@
                 </div>
 
             </div>
+
+        </div>
+        <div id="homeColumn3" class="col bg-secondary-subtle">
+
 
         </div>
     </div>
@@ -66,7 +74,6 @@
         </div>
     </div>
 
-</div>
 </div>
 
 
