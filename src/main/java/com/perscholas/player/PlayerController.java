@@ -1,7 +1,6 @@
 package com.perscholas.player;
 
 import com.perscholas.ancestry.AncestryService;
-import com.perscholas.ancestryBenefit.AncestryBenefitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +14,11 @@ public class PlayerController {
 
     private final PlayerService playerService;
     private final AncestryService ancestryService;
-    private final AncestryBenefitService ancestryBenefitService;
 
     @Autowired
-    public PlayerController(PlayerService playerService, AncestryService ancestryService, AncestryBenefitService ancestryBenefitService) {
+    public PlayerController(PlayerService playerService, AncestryService ancestryService) {
         this.playerService = playerService;
         this.ancestryService = ancestryService;
-        this.ancestryBenefitService = ancestryBenefitService;
     }
 
     // Display Player list
@@ -110,19 +107,11 @@ public class PlayerController {
     // TODO Step 6 Save Ancestry how to set from the accordion?
     @PostMapping("/saveAncestry/{ancestry}")
     public String saveAncestry(@ModelAttribute("player") Player player) {
+
         playerService.savePlayer(player);
         return "redirect:/showAncestryBenefits/" + player.getId();
     }
 
-
-    // Step 7 TODO save Ancestry and show ancestry abilities form
-    @GetMapping("/showAncestryBenefits/{id}")
-    public String showAncestryBenefits(@PathVariable(value = "id") int id, Model model) {
-        model.addAttribute("player", playerService.getPlayerById(id));
-        //Should show a table of benefits, user must pick 2
-
-        return "redirect:/player/ancestryBenefit";
-    }
 
 
     /*Still need to do:

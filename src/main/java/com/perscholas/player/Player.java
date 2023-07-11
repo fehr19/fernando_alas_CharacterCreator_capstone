@@ -19,9 +19,7 @@ public class Player {
     @Size(min=2, message="Name must be at least 2 characters long")
     @Column(name="character_name")
     private String name;
-    private String ancestry;
-    private String socialClass;
-    private String background;
+    private Ancestry ancestry;
     private String classProfession;
     private int health;
     private int defense;
@@ -57,28 +55,12 @@ public class Player {
         this.name = name;
     }
 
-    public String getAncestry() {
+    public Ancestry getAncestry() {
         return ancestry;
     }
 
-    public void setAncestry(String ancestry) {
+    public void setAncestry(Ancestry ancestry) {
         this.ancestry = ancestry;
-    }
-
-    public String getSocialClass() {
-        return socialClass;
-    }
-
-    public void setSocialClass(String socialClass) {
-        this.socialClass = socialClass;
-    }
-
-    public String getBackground() {
-        return background;
-    }
-
-    public void setBackground(String background) {
-        this.background = background;
     }
 
     public String getClassProfession() {

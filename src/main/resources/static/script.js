@@ -1,35 +1,35 @@
 var abilityPoints = 13;
 
-const numberInput = document.querySelector('.number');
-const increaseButton = document.querySelector('.increase');
-const decreaseButton = document.querySelector('.decrease');
+const numberInput1 = document.querySelector('.number1');
+const increaseButton1 = document.querySelector('.increase1');
+const decreaseButton1 = document.querySelector('.decrease1');
 
 increaseButton.addEventListener('click', () => {
   abilityPoints--;
-  numberInput.value++;
+  numberInput1.value++;
   document.getElementById("abilityPoints").innerHTML = abilityPoints;
 });
 
 decreaseButton.addEventListener('click', () => {
   abilityPoints++;
-  numberInput.value--;
+  numberInput1.value--;
   document.getElementById("abilityPoints").innerHTML = abilityPoints;
 });
 
 
 
-const numberInput1 = document.querySelector('.number1');
-const increaseButton1 = document.querySelector('.increase1');
-const decreaseButton1 = document.querySelector('.decrease1');
+var numberInput2 = document.querySelector('.number2');
+var increaseButton2 = document.querySelector('.increase2');
+var decreaseButton2 = document.querySelector('.decrease2');
 
 increaseButton1.addEventListener('click', () => {
-  numberInput1.value++;
+  numberInput2.value++;
   abilityPoints--;
   document.getElementById("abilityPoints").innerHTML = abilityPoints;
 });
 
 decreaseButton1.addEventListener('click', () => {
-  numberInput1.value--;
+  numberInput2.value--;
   abilityPoints++;
   document.getElementById("abilityPoints").innerHTML = abilityPoints;
 });

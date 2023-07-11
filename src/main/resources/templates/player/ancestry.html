@@ -9,6 +9,7 @@
     <title>Ancestry</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../static/script.js" defer></script>
+    <script type="text/javascript" th:src="@{../../static/script.js}" defer></script>
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
 
@@ -21,7 +22,7 @@
         </div>
     </div>
 
-    <form id="ancestryForm" action="#" th:action="@{/saveAncestry}" th:object="${player}"
+    <form id="ancestryForm" action="#" th:action="@{/saveAncestry/{ancestry}(ancestry=${ancestry.id}})}" th:object="${player}"
           method="POST">
         <input type="hidden" th:field="*{id}" />
         <input type="hidden" th:field="*{accuracy}" />
@@ -33,6 +34,7 @@
         <input type="hidden" th:field="*{perception}" />
         <input type="hidden" th:field="*{strength}" />
         <input type="hidden" th:field="*{willpower}" />
+    </form>
 
     <div class="row">
 
@@ -70,12 +72,12 @@
                                     <div th:id="${ancestry.ancestryName}" class="accordion-collapse collapse"
                                          data-bs-parent="#ancestryAccordion">
                                         <div class="accordion-body" th:text="${ancestry.description}">
-                                            <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}"
-                                               class="btn btn-primary">Select</a>
+
                                         </div>
 
-                                        <a th:href="@{/saveAncestry/{ancestry}(ancestry=${ancestry.ancestryName})}"
-                                           class="btn btn-primary">Select</a>
+
+
+                                        <button form="ancestryForm" type="submit" class="btn btn-info col-2">Select</button>
 
 
                                     </div>
@@ -96,7 +98,7 @@
             </div>
 
     </div>
-    </form>
+
 
     <!--Would like to make these buttons opposite ends of each other-->
     <!--Need to add href after I figure out the order of the pages-->

@@ -68,32 +68,73 @@
                           method="POST">
                         <input type="hidden" th:field="*{id}" />
                         <input type="hidden" th:field="*{name}" />
-                        <input type="hidden" th:field="*{ancestry}" />
-                        <input type="hidden" th:field="*{socialClass}" />
-                        <input type="hidden" th:field="*{background}" />
-                        <input type="hidden" th:field="*{classProfession}" />
-                        <input type="hidden" th:field="*{health}" />
-                        <input type="hidden" th:field="*{defense}" />
-                        <input type="hidden" th:field="*{speed}" />
 
 
                         <!--Add thymeleaf to push the values to the abilities on submit
                             abilities can not be negative-->
                         <div>
                             <label for="accuracy">Accuracy</label>
-                            <input th:field="*{accuracy}" id="accuracy" type="text" class="number"/>
-                            <button class="decrease"><</button>
-                            <button class="increase">></button>
+                            <input th:field="*{accuracy}" id="accuracy" type="number" class="number1"/>
+                            <button class="decrease1"><</button>
+                            <button class="increase1">></button>
                         </div>
                         <br>
                         <div>
                             <label for="communication">Communication</label>
-                            <input th:field="*{communication}" type="text" id="communication" class="number1"/>
-                            <button class="decrease1"><</button>
-                            <button class="increase1">></button>
+                            <input th:field="*{communication}" type="number" id="communication" class="number2"/>
+                            <button class="decrease2"><</button>
+                            <button class="increase2">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="constitution">Constitution</label>
+                            <input th:field="*{constitution}" type="number" id="constitution" class="number3"/>
+                            <button class="decrease3"><</button>
+                            <button class="increase3">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="dexterity">Dexterity</label>
+                            <input th:field="*{dexterity}" type="number" id="dexterity" class="number4"/>
+                            <button class="decrease4"><</button>
+                            <button class="increase4">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="fighting">Fighting</label>
+                            <input th:field="*{fighting}" type="number" id="fighting" class="number5"/>
+                            <button class="decrease5"><</button>
+                            <button class="increase5">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="intelligence">Intelligence</label>
+                            <input th:field="*{intelligence}" type="number" id="intelligence" class="number6"/>
+                            <button class="decrease6"><</button>
+                            <button class="increase6">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="perception">Perception</label>
+                            <input th:field="*{perception}" type="number" id="perception" class="number7"/>
+                            <button class="decrease7"><</button>
+                            <button class="increase7">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="strength">Strength</label>
+                            <input th:field="*{strength}" type="number" id="strength" class="number8"/>
+                            <button class="decrease8"><</button>
+                            <button class="increase8">></button>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="willpower">Willpower</label>
+                            <input th:field="*{willpower}" type="number" id="willpower" class="number9"/>
+                            <button class="decrease9"><</button>
+                            <button class="increase9">></button>
                         </div>
 
-                        <!--Add more abilities (9 total)-->
                     </form>
 
                 </div>
