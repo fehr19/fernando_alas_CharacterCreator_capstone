@@ -1,6 +1,7 @@
 package com.perscholas.player;
 
 import com.perscholas.ancestry.Ancestry;
+import com.perscholas.playerancestry.PlayerAncestry;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,7 +20,8 @@ public class Player {
     @Size(min=2, message="Name must be at least 2 characters long")
     @Column(name="character_name")
     private String name;
-    private Ancestry ancestry;
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private PlayerAncestry playerAncestry;
     private String classProfession;
     private int health;
     private int defense;
@@ -55,12 +57,12 @@ public class Player {
         this.name = name;
     }
 
-    public Ancestry getAncestry() {
-        return ancestry;
+    public PlayerAncestry getPlayerAncestry() {
+        return playerAncestry;
     }
 
-    public void setAncestry(Ancestry ancestry) {
-        this.ancestry = ancestry;
+    public void setPlayerAncestry(PlayerAncestry playerAncestry) {
+        this.playerAncestry = playerAncestry;
     }
 
     public String getClassProfession() {
@@ -167,4 +169,5 @@ public class Player {
         this.willpower = willpower;
     }
 
+    // TODO insert methods to calculate speed, health, and defense
 }

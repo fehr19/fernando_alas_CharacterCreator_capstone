@@ -8,11 +8,11 @@ import javax.persistence.Id;
 @Entity
 public class Ancestry {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String ancestryName;
-    private String description;
     private int speedMod;
+    private String description;
+
 
 
     public Ancestry() {
@@ -34,19 +34,19 @@ public class Ancestry {
         this.ancestryName = ancestryName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getSpeedMod() {
         return speedMod;
     }
 
     public void setSpeedMod(int speedMod) {
         this.speedMod = speedMod;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

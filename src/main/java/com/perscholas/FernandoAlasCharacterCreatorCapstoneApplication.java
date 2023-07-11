@@ -26,16 +26,7 @@ public class FernandoAlasCharacterCreatorCapstoneApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner1() {
-		CommandLineRunner commandLineRunner = new CommandLineRunner() {
-			@Override
-			public void run(String... args) throws Exception {
-				System.out.println("Character creator initialized");
-
-
-			}
-
-		};
-		return  commandLineRunner;
+		return args -> System.out.println("Character creator initialized");
 	}
 
 }
