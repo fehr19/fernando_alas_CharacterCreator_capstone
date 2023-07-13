@@ -1,6 +1,7 @@
 package com.perscholas.player;
 
 import com.perscholas.ancestry.Ancestry;
+import com.perscholas.playerArchetype.PlayerArchetype;
 import com.perscholas.playerancestry.PlayerAncestry;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class Player {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PlayerAncestry_id")
     private PlayerAncestry playerAncestry;
-    private String classProfession;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PlayerArchetype_id")
+    private PlayerArchetype playerArchetype;
     private int health;
     private int defense;
     private int speed;
@@ -66,12 +69,12 @@ public class Player {
         this.playerAncestry = playerAncestry;
     }
 
-    public String getClassProfession() {
-        return classProfession;
+    public PlayerArchetype getPlayerArchetype() {
+        return playerArchetype;
     }
 
-    public void setClassProfession(String classProfession) {
-        this.classProfession = classProfession;
+    public void setPlayerArchetype(PlayerArchetype playerArchetype) {
+        this.playerArchetype = playerArchetype;
     }
 
     public int getHealth() {
@@ -170,11 +173,17 @@ public class Player {
         this.willpower = willpower;
     }
 
+
     public void addPlayerAncestryToPlayer(PlayerAncestry playerAncestry) {
         this.setPlayerAncestry(playerAncestry);
         this.setSpeed(playerAncestry.getSpeedMod() + this.getDexterity());
     }
-    // TODO insert method to calculate health
+
+    public void addPlayerArchetypeToPlayer(PlayerArchetype playerArchetype) {
+        this.setPlayerArchetype(playerArchetype);
+        this.setHealth(playerArchetype.getHealthMod() + this.getConstitution());
+    }
+
 
     // TODO insert method to calculate defense
 }

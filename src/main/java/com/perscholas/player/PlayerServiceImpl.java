@@ -2,9 +2,11 @@ package com.perscholas.player;
 
 import com.perscholas.ancestry.Ancestry;
 import com.perscholas.ancestry.AncestryService;
-import com.perscholas.ancestry.AncestryServiceImpl;
+import com.perscholas.archetype.Archetype;
+import com.perscholas.archetype.ArchetypeService;
+import com.perscholas.playerArchetype.PlayerArchetype;
+import com.perscholas.playerArchetype.PlayerArchetypeService;
 import com.perscholas.playerancestry.PlayerAncestry;
-import com.perscholas.playerancestry.PlayerAncestryRepository;
 import com.perscholas.playerancestry.PlayerAncestryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +19,22 @@ public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
     private final PlayerAncestryService playerAncestryService;
+    private final PlayerArchetypeService playerArchetypeService;
     private final AncestryService ancestryService;
+    private final ArchetypeService archetypeService;
 
 
     @Autowired
-    public PlayerServiceImpl(PlayerRepository playerRepository, PlayerAncestryService playerAncestryService, AncestryService ancestryService) {
+    public PlayerServiceImpl(PlayerRepository playerRepository,
+                             PlayerAncestryService playerAncestryService,
+                             PlayerArchetypeService playerArchetypeService,
+                             AncestryService ancestryService,
+                             ArchetypeService archetypeService) {
         this.playerRepository = playerRepository;
         this.playerAncestryService = playerAncestryService;
+        this.playerArchetypeService = playerArchetypeService;
         this.ancestryService = ancestryService;
+        this.archetypeService = archetypeService;
     }
 
     @Override
@@ -60,5 +70,11 @@ public class PlayerServiceImpl implements PlayerService {
 
     }
 
-
+    @Override
+    public void savePlayerArchetypeByArchetypeId(Player player, int archetypeId) {
+        Archetype archetype = archetypeService.getArchetypeById(archetypeId);
+        PlayerArchetype playerArchetype = playerArchetypeService.getPlayerArchetypeFromArchetype(archetype);
+        player.addPlayerArchetypeToPlayer(playerArchetype);
+        playerArchetypeService.savePlayerArchetype(playerArchetype);
+    }
 }

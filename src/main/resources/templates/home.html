@@ -24,8 +24,8 @@
         <tr>
             <th>Character</th>
             <th>Ancestry</th>
-            <th>Speed</th>
-            <th></th>
+            <th>Class</th>
+            <th>Actions</th>
 
         </tr>
         </thead>
@@ -34,10 +34,12 @@
         <tr th:each="player : ${listPlayers}">
             <td th:text="${player.name}"></td>
             <td th:text="${player.playerAncestry.name}"></td>
+            <td th:text="${player.playerArchetype.name}"></td>
 
-            <td th:text="${player.speed}"></td>
             <td><a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"
                    class="btn btn-primary">Update</a>
+                <a th:href="@{/showViewPlayerForm/{id}(id=${player.id})}"
+                   class="btn btn-primary">View</a>
             </td>
         </tr>
         </tbody>
