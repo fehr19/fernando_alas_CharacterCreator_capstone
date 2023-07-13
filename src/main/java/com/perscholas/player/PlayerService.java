@@ -14,4 +14,5 @@ public interface PlayerService {
     Player getPlayerById(int id);
 
     void deletePlayerById(int id);
+    void savePlayerAncestryByAncestryId(Player player, int ancestryId);
 }

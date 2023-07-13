@@ -34,7 +34,7 @@ public class PlayerController {
     public String showUpdateCharacterForm(@PathVariable int id, Model model) {
         Player player = playerService.getPlayerById(id);
         model.addAttribute("player", player);
-        return "updatePlayer";
+        return "player/characterName";
     }
 
     @GetMapping("/deletePlayer/{id}")
@@ -105,10 +105,16 @@ public class PlayerController {
 
 
     // TODO Step 6 Save Ancestry how to set from the accordion?
-    @PostMapping("/saveAncestry/{ancestry}")
-    public String saveAncestry(@ModelAttribute("player") Player player) {
-
+    @PostMapping("/saveAncestry/{ancestryId}")
+    public String saveAncestry(@PathVariable(value = "ancestryId") int ancestryId,
+            @ModelAttribute("player") Player player,
+                               Model model) {
+        playerService.savePlayerAncestryByAncestryId(player, ancestryId);
         playerService.savePlayer(player);
+        // TODO add model attribute for classProfession get all professions
+        // model.addAttribute("listClassProfessions", classProfessionService.getAllClassProfessions());
+
+        model.addAttribute("player", player);
         return "redirect:/showAncestryBenefits/" + player.getId();
     }
 

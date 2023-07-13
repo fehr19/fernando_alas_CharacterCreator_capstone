@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css"/>
     <title>Abilities</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../static/script.js" defer></script>
+    <script defer src="../../static/script.js" th:src="@{/script.js}"></script>
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
 
@@ -59,80 +59,79 @@
 
                     <!-- Ability points cannot go below zero-->
                     <div>
-                        <h2 id="abilityPoints">13</h2>
+                        <h2 id="abilityPoints"></h2>
                     </div>
                     <br>
 
 
-                    <form id="abilitiesForm" action="#" th:action="@{/saveAbilities}" th:object="${player}"
+                    <form id="abilitiesForm" action="" th:action="@{/saveAbilities}" th:object="${player}"
                           method="POST">
                         <input type="hidden" th:field="*{id}" />
                         <input type="hidden" th:field="*{name}" />
 
 
-                        <!--Add thymeleaf to push the values to the abilities on submit
-                            abilities can not be negative-->
+                        <!--TODO If time permits, create DB to make this dynamic.-->
                         <div>
                             <label for="accuracy">Accuracy</label>
-                            <input th:field="*{accuracy}" id="accuracy" type="number" class="number1"/>
-                            <button class="decrease1"><</button>
-                            <button class="increase1">></button>
+                            <input th:field="*{accuracy}" id="accuracy" type="number"/>
+                            <button onclick="decrease(event, 'accuracy')" type="button"><--</button>
+                            <button onclick="increase(event, 'accuracy')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="communication">Communication</label>
-                            <input th:field="*{communication}" type="number" id="communication" class="number2"/>
-                            <button class="decrease2"><</button>
-                            <button class="increase2">></button>
+                            <input th:field="*{communication}" id="communication" type="number"/>
+                            <button onclick="decrease(event, 'communication')" type="button"><--</button>
+                            <button onclick="increase(event, 'communication')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="constitution">Constitution</label>
-                            <input th:field="*{constitution}" type="number" id="constitution" class="number3"/>
-                            <button class="decrease3"><</button>
-                            <button class="increase3">></button>
+                            <input th:field="*{constitution}" id="constitution" type="number"/>
+                            <button onclick="decrease(event, 'constitution')" type="button"><--</button>
+                            <button onclick="increase(event, 'constitution')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="dexterity">Dexterity</label>
-                            <input th:field="*{dexterity}" type="number" id="dexterity" class="number4"/>
-                            <button class="decrease4"><</button>
-                            <button class="increase4">></button>
+                            <input th:field="*{dexterity}" id="dexterity" type="number"/>
+                            <button onclick="decrease(event, 'dexterity')" type="button"><--</button>
+                            <button onclick="increase(event, 'dexterity')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="fighting">Fighting</label>
-                            <input th:field="*{fighting}" type="number" id="fighting" class="number5"/>
-                            <button class="decrease5"><</button>
-                            <button class="increase5">></button>
+                            <input th:field="*{fighting}" id="fighting" type="number"/>
+                            <button onclick="decrease(event, 'fighting')" type="button"><--</button>
+                            <button onclick="increase(event, 'fighting')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="intelligence">Intelligence</label>
-                            <input th:field="*{intelligence}" type="number" id="intelligence" class="number6"/>
-                            <button class="decrease6"><</button>
-                            <button class="increase6">></button>
+                            <input th:field="*{intelligence}" id="intelligence" type="number"/>
+                            <button onclick="decrease(event, 'intelligence')" type="button"><--</button>
+                            <button onclick="increase(event, 'intelligence')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="perception">Perception</label>
-                            <input th:field="*{perception}" type="number" id="perception" class="number7"/>
-                            <button class="decrease7"><</button>
-                            <button class="increase7">></button>
+                            <input th:field="*{perception}" id="perception" type="number"/>
+                            <button onclick="decrease(event, 'perception')" type="button"><--</button>
+                            <button onclick="increase(event, 'perception')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="strength">Strength</label>
-                            <input th:field="*{strength}" type="number" id="strength" class="number8"/>
-                            <button class="decrease8"><</button>
-                            <button class="increase8">></button>
+                            <input th:field="*{strength}" id="strength" type="number"/>
+                            <button onclick="decrease(event, 'strength')" type="button"><--</button>
+                            <button onclick="increase(event, 'strength')" type="button">--></button>
                         </div>
                         <br>
                         <div>
                             <label for="willpower">Willpower</label>
-                            <input th:field="*{willpower}" type="number" id="willpower" class="number9"/>
-                            <button class="decrease9"><</button>
-                            <button class="increase9">></button>
+                            <input th:field="*{willpower}" id="willpower" type="number"/>
+                            <button onclick="decrease(event, 'willpower')" type="button"><--</button>
+                            <button onclick="increase(event, 'willpower')" type="button">--></button>
                         </div>
 
                     </form>

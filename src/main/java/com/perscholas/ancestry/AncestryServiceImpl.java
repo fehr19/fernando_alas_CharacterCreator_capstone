@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AncestryServiceImpl implements AncestryService {
@@ -23,9 +24,12 @@ public class AncestryServiceImpl implements AncestryService {
     }
 
     @Override
-    public int calculateSpeedByName(int dexterity, String name) {
-        Ancestry ancestry = ancestryRepository.findSpeedModByAncestryName(name);
-        return ancestry.getSpeedMod() + dexterity;
+    public Ancestry getAncestryById(int id) {
+        Optional<Ancestry> optionalAncestry = ancestryRepository.findById(id);
+        if (optionalAncestry.isPresent()) {
+            return optionalAncestry.get();
+        }
+        throw new AncestryNotFoundException();
     }
 
 

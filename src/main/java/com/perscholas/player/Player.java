@@ -20,7 +20,8 @@ public class Player {
     @Size(min=2, message="Name must be at least 2 characters long")
     @Column(name="character_name")
     private String name;
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PlayerAncestry_id")
     private PlayerAncestry playerAncestry;
     private String classProfession;
     private int health;
@@ -169,5 +170,11 @@ public class Player {
         this.willpower = willpower;
     }
 
-    // TODO insert methods to calculate speed, health, and defense
+    public void addPlayerAncestryToPlayer(PlayerAncestry playerAncestry) {
+        this.setPlayerAncestry(playerAncestry);
+        this.setSpeed(playerAncestry.getSpeedMod() + this.getDexterity());
+    }
+    // TODO insert method to calculate health
+
+    // TODO insert method to calculate defense
 }

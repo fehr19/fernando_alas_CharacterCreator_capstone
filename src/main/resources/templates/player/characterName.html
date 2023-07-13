@@ -16,8 +16,10 @@
     <h1>Create a New Character</h1>
 
     <form action="#" th:action="@{/saveNewCharacter}" th:object="${player}" method="POST">
-
-        <input type="text" th:field="*{name}" placeholder="Character Name" class="form-control mb-4 col-4">
+        <input type="hidden" th:field="*{id}" />
+        <label for="Name">Character Name
+            <input type="text" th:field="*{name}" id="Name" placeholder="Character Name" class="form-control mb-4 col-4">
+        </label>
 
         <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
 

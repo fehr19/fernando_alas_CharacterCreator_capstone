@@ -28,8 +28,11 @@
 
 
                 <div class="card-body">
-                    <h5 class="card-title">Chosen Ancestry Name, background</h5>
-                    <p class="card-text">Character info, social class</p>
+                    Character Name
+                    <h5 class="card-title" th:text="*{player.name}"></h5>
+                    Ancestry
+                    <h6 class="card-title" th:text="*{player.playerAncestry.name}"></h6>
+
                 </div>
 
 
