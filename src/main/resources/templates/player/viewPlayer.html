@@ -27,9 +27,36 @@
 
 
   <div class="row">
+
     <div class="col bg-secondary-subtle">
 
+    </div>
 
+
+    <div class="col-8 bg-secondary-subtle">
+
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title" th:text="${player.name}"></h1>
+          <h3 class="card-title" th:text="${player.ancestry + ' ' +  player.archetype}"></h3>
+
+
+          <div class="col bg-secondary-subtle">
+            <h5 class="card-title" th:text="${player.archetype}"></h5>
+            <h5 class="card-title" th:text="${player.archetype}"></h5>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="col bg-secondary-subtle">
 
 
 
@@ -37,12 +64,18 @@
   </div>
 
 
+
+
   <div class="row justify-content-evenly">
     <div id="footer" class="col bg-secondary-subtle">
 
+      <a th:href="@{/}"> <button class="btn btn-info">Home</button></a>
 
-      <button class="btn btn-secondary">Home</button>
-      <button class="btn btn-danger">Delete</button>
+      <a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"
+         class="btn btn-primary">Update</a>
+
+      <a th:href="@{/deletePlayer/{id}(id=${player.id})}"
+         class="btn btn-danger">Delete</a>
     </div>
   </div>
 

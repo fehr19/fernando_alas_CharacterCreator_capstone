@@ -55,7 +55,7 @@
                 <!--Needs to be a FORM-->
                 <div class="card-body">
 
-                    <h5 id="name1" class="card-title">Points Remaining</h5>
+                    <h5 class="card-title">Points Remaining</h5>
 
                     <!-- Ability points cannot go below zero-->
                     <div>
@@ -68,6 +68,9 @@
                           method="POST">
                         <input type="hidden" th:field="*{id}" />
                         <input type="hidden" th:field="*{name}" />
+                        <input type="hidden" th:field="*{health}" />
+                        <input type="hidden" th:field="*{defense}" />
+                        <input type="hidden" th:field="*{speed}" />
 
 
                         <!--TODO If time permits, create DB to make this dynamic.-->

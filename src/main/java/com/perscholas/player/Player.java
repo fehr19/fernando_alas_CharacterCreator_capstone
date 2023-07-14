@@ -24,12 +24,15 @@ public class Player {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PlayerAncestry_id")
     private PlayerAncestry playerAncestry;
+    private String ancestry;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PlayerArchetype_id")
     private PlayerArchetype playerArchetype;
+    private String archetype;
     private int health;
     private int defense;
     private int speed;
+
 
     // Abilities
     int accuracy;
@@ -69,12 +72,28 @@ public class Player {
         this.playerAncestry = playerAncestry;
     }
 
+    public String getAncestry() {
+        return ancestry;
+    }
+
+    public void setAncestry(String ancestry) {
+        this.ancestry = ancestry;
+    }
+
     public PlayerArchetype getPlayerArchetype() {
         return playerArchetype;
     }
 
     public void setPlayerArchetype(PlayerArchetype playerArchetype) {
         this.playerArchetype = playerArchetype;
+    }
+
+    public String getArchetype() {
+        return archetype;
+    }
+
+    public void setArchetype(String archetype) {
+        this.archetype = archetype;
     }
 
     public int getHealth() {
@@ -176,14 +195,13 @@ public class Player {
 
     public void addPlayerAncestryToPlayer(PlayerAncestry playerAncestry) {
         this.setPlayerAncestry(playerAncestry);
+        this.setAncestry(playerAncestry.getName());
         this.setSpeed(playerAncestry.getSpeedMod() + this.getDexterity());
     }
 
     public void addPlayerArchetypeToPlayer(PlayerArchetype playerArchetype) {
         this.setPlayerArchetype(playerArchetype);
+        this.setArchetype(playerArchetype.getName());
         this.setHealth(playerArchetype.getHealthMod() + this.getConstitution());
     }
-
-
-    // TODO insert method to calculate defense
 }

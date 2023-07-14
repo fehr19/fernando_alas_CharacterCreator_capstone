@@ -106,8 +106,6 @@ public class PlayerController {
                                Model model) {
         playerService.savePlayerAncestryByAncestryId(player, ancestryId);
         playerService.savePlayer(player);
-
-        model.addAttribute("player", player);
         return "redirect:/showArchetypesForm/" + player.getId();
     }
 

@@ -33,8 +33,8 @@
         <tbody>
         <tr th:each="player : ${listPlayers}">
             <td th:text="${player.name}"></td>
-            <td th:text="${player.playerAncestry.name}"></td>
-            <td th:text="${player.playerArchetype.name}"></td>
+            <td th:text="${player.ancestry}"></td>
+            <td th:text="${player.archetype}"></td>
 
             <td><a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"
                    class="btn btn-primary">Update</a>
