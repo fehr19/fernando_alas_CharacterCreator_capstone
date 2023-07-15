@@ -10,14 +10,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
-<body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
+<body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary"
+      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');">
 
 
-<div class="container text-center">
+<div class="container text-center bg-black bg-opacity-50">
 
     <div class="row">
-        <div class="col bg-secondary-subtle">
-            <h1 class="text-dark">Step 2: Ancestry</h1>
+        <div class="col bg-transparent">
+            <h1 class="text-light">Ancestry</h1>
         </div>
     </div>
 
@@ -25,9 +26,9 @@
     <div class="row">
 
 
-        <div id="homeColumn1" class="col bg-secondary-subtle">
+        <div id="homeColumn1" class="col bg-transparent">
 
-            <div class="card">
+            <div class="card bg-transparent">
                 <div class="card-body">
                     <img src="https://i.imgur.com/D7n0hsz.jpg" class="card-img-top img-thumbnail" alt="...">
                 </div>
@@ -35,24 +36,26 @@
 
             <br>
 
-            <button onclick="" class="btn btn-secondary">< Back</button>
+            <a th:href="@{/showAbilitiesForm/{id}(id=${player.id})}"
+               class="btn btn-secondary">Back</a>
 
             <br>
             <br>
 
-            <div class="card">
+            <div class="card text-light bg-transparent">
                 <div class="card-body">
                     Character Name
                     <h5 class="card-title" th:text="*{player.name}"></h5>
+                    <hr class="hr hr-blurry"/>
                 </div>
             </div>
 
         </div>
 
 
-        <div id="homeColumn2" class="col-6 bg-secondary-subtle">
+        <div id="homeColumn2" class="col-6 bg-transparent">
 
-            <div class="card">
+            <div class="card text-light bg-transparent">
                 <div class="card-body">
                     <h5 class="card-title">Choose an Ancestry</h5>
 
@@ -104,19 +107,15 @@
 
         </div>
 
-        <div id="homeColumn3" class="col bg-secondary-subtle">
+        <div id="homeColumn3" class="col text-light bg-transparent">
             <img src="https://i.imgur.com/PZalg1D.jpg" class="card-img-top img-thumbnail" alt="...">
 
         </div>
 
     </div>
 
-
-    <!--Would like to make these buttons opposite ends of each other-->
-    <!--Need to add href after I figure out the order of the pages-->
-
     <div class="row justify-content-evenly">
-        <div id="footer" class="col bg-secondary-subtle">
+        <div id="footer" class="col text-light bg-transparent">
 
 
             <a th:href="@{/}"> <button class="btn btn-secondary">Home</button></a>
