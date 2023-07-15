@@ -25,77 +25,89 @@
     <div class="row">
 
 
-            <div id="homeColumn1" class="col bg-secondary-subtle">
+        <div id="homeColumn1" class="col bg-secondary-subtle">
 
-                <div class="card">
-                    <div class="card-body">
-                        Character Name
-                        <h5 class="card-title" th:text="*{player.name}"></h5>
-                    </div>
-
+            <div class="card">
+                <div class="card-body">
+                    <img src="https://i.imgur.com/D7n0hsz.jpg" class="card-img-top img-thumbnail" alt="...">
                 </div>
-
-
             </div>
 
+            <br>
 
-            <div id="homeColumn2" class="col-6 bg-secondary-subtle">
+            <button onclick="" class="btn btn-secondary">< Back</button>
 
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Choose an Ancestry</h5>
+            <br>
+            <br>
 
-                        <div class="accordion" id="ancestryAccordion">
-                                <div class="accordion-item" th:each="ancestry : ${listAncestries}">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse"
-                                                th:text="${ancestry.ancestryName}"
-                                                th:data-bs-target="${'#' + ancestry.ancestryName}"
-                                                aria-expanded="false" th:aria-controls="${ancestry.ancestryName}">
-                                        </button>
-                                    </h2>
-                                    <div th:id="${ancestry.ancestryName}" class="accordion-collapse collapse"
-                                         data-bs-parent="#ancestryAccordion">
-                                        <div class="accordion-body" th:text="${ancestry.description}">
+            <div class="card">
+                <div class="card-body">
+                    Character Name
+                    <h5 class="card-title" th:text="*{player.name}"></h5>
+                </div>
+            </div>
 
-                                        </div>
-                                        <form id="ancestryForm" action="#" th:action="@{/saveAncestry/{ancestry}(ancestry=${ancestry.id})}"
-                                              th:object="${player}"
-                                              method="POST">
-                                            <input type="hidden" th:field="*{id}" />
-                                            <input type="hidden" th:field="*{name}" />
-                                            <input type="hidden" th:field="*{health}" />
-                                            <input type="hidden" th:field="*{defense}" />
-                                            <input type="hidden" th:field="*{speed}" />
-                                            <input type="hidden" th:field="*{accuracy}" />
-                                            <input type="hidden" th:field="*{communication}" />
-                                            <input type="hidden" th:field="*{constitution}" />
-                                            <input type="hidden" th:field="*{dexterity}" />
-                                            <input type="hidden" th:field="*{fighting}" />
-                                            <input type="hidden" th:field="*{intelligence}" />
-                                            <input type="hidden" th:field="*{perception}" />
-                                            <input type="hidden" th:field="*{strength}" />
-                                            <input type="hidden" th:field="*{willpower}" />
+        </div>
 
-                                            <input value="Select" type="submit" class="btn btn-info col-2" />
-                                        </form>
 
-                                    </div>
+        <div id="homeColumn2" class="col-6 bg-secondary-subtle">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Choose an Ancestry</h5>
+
+                    <div class="accordion" id="ancestryAccordion">
+                        <div class="accordion-item" th:each="ancestry : ${listAncestries}">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse"
+                                        th:text="${ancestry.ancestryName}"
+                                        th:data-bs-target="${'#' + ancestry.ancestryName}"
+                                        aria-expanded="false" th:aria-controls="${ancestry.ancestryName}">
+                                </button>
+                            </h2>
+                            <div th:id="${ancestry.ancestryName}" class="accordion-collapse collapse"
+                                 data-bs-parent="#ancestryAccordion">
+                                <div class="accordion-body" th:text="${ancestry.description}">
+
                                 </div>
+                                <form id="ancestryForm" action="#"
+                                      th:action="@{/saveAncestry/{ancestry}(ancestry=${ancestry.id})}"
+                                      th:object="${player}"
+                                      method="POST">
+                                    <input type="hidden" th:field="*{id}"/>
+                                    <input type="hidden" th:field="*{name}"/>
+                                    <input type="hidden" th:field="*{health}"/>
+                                    <input type="hidden" th:field="*{defense}"/>
+                                    <input type="hidden" th:field="*{speed}"/>
+                                    <input type="hidden" th:field="*{accuracy}"/>
+                                    <input type="hidden" th:field="*{communication}"/>
+                                    <input type="hidden" th:field="*{constitution}"/>
+                                    <input type="hidden" th:field="*{dexterity}"/>
+                                    <input type="hidden" th:field="*{fighting}"/>
+                                    <input type="hidden" th:field="*{intelligence}"/>
+                                    <input type="hidden" th:field="*{perception}"/>
+                                    <input type="hidden" th:field="*{strength}"/>
+                                    <input type="hidden" th:field="*{willpower}"/>
 
+                                    <input value="Select" type="submit" class="btn btn-primary col-2"/>
+                                </form>
+                                <br>
+                            </div>
                         </div>
 
                     </div>
+
                 </div>
-
-
             </div>
 
-            <div id="homeColumn3" class="col bg-secondary-subtle">
 
+        </div>
 
-            </div>
+        <div id="homeColumn3" class="col bg-secondary-subtle">
+            <img src="https://i.imgur.com/PZalg1D.jpg" class="card-img-top img-thumbnail" alt="...">
+
+        </div>
 
     </div>
 
@@ -107,9 +119,8 @@
         <div id="footer" class="col bg-secondary-subtle">
 
 
-            <button onclick="" class="btn btn-secondary">Back</button>
-            <!--Add a page numbers: "2 of 7" -->
-            <button class="btn btn-secondary">Next</button>
+            <a th:href="@{/}"> <button class="btn btn-secondary">Home</button></a>
+
         </div>
     </div>
 

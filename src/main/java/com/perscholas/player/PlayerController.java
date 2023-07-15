@@ -122,7 +122,7 @@ public class PlayerController {
                                Model model) {
         playerService.savePlayerArchetypeByArchetypeId(player, archetypeId);
         playerService.savePlayer(player);
-        return "redirect:/";
+        return "redirect:/showViewPlayerForm/" + player.getId();
     }
 
 

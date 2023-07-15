@@ -12,24 +12,67 @@
 </head>
 
 <!--TODO add styling to match the rest of the pages-->
-<body class="p-3 m-0 border-0 bg-secondary">
+<body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary">
 
 <div class="container text-center">
-    <h1>Create a New Character</h1>
 
-    <form action="#" th:action="@{/saveNewCharacter}" th:object="${player}" method="POST">
-        <input type="hidden" th:field="*{id}" />
-        <label for="Name">Character Name
-            <input type="text" th:field="*{name}" id="Name" placeholder="Character Name" class="form-control mb-4 col-4">
-        </label>
+    <div class="row">
 
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        <div class="col bg-secondary-subtle">
+            <h1 class="text-dark">Name Your Character</h1>
+        </div>
 
-        <button type="submit" class="btn btn-info col-2">Next</button>
-    </form>
+    </div>
 
-    <hr>
-    <a th:href="@{/}">Back to Character List</a>
+
+    <div class="row">
+
+        <div class="col bg-secondary-subtle">
+            <div class="card">
+                <div class="card-body">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-6 bg-secondary-subtle">
+
+            <form id="nameForm" action="#" th:action="@{/saveNewCharacter}" th:object="${player}" method="POST">
+                <input type="hidden" th:field="*{id}"/>
+                <label for="Name">Character Name
+                    <input type="text" th:field="*{name}" id="Name" placeholder="Character Name"
+                           class="form-control mb-4 col-4">
+                </label>
+
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+
+
+            </form>
+
+        </div>
+
+        <div class="col bg-secondary-subtle">
+
+            <div class="card">
+                <div class="card-body">
+
+                </div>
+            </div>
+
+            <br>
+
+            <button type="submit" form="nameForm" class="btn btn-primary">Next ></button>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div id="footer" class="col bg-secondary-subtle">
+            <a th:href="@{/}"> <button class="btn btn-secondary">Home</button></a>
+        </div>
+    </div>
 
 
 </div>
