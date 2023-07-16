@@ -34,6 +34,12 @@
             <div class="card text-light bg-transparent">
                 <img src="https://i.imgur.com/2joxrS2.jpg" class="card-img-top img-thumbnail" alt="<No image>">
                 <div class="card-body">
+                    <h5 class="card-title">Character Sheet</h5>
+                    <p class="card-text">Your character sheet is the cornerstone of your Player
+                        Character, or PC. You’ll need it for each and every game session,
+                        along with three six-sided dice (Fantasy AGE doesn’t use any other kind),
+                        one of which should look different from the others. You’ll also need
+                        something to take notes with. A pencil and some scratch paper is ideal.</p>
 
                 </div>
             </div>
@@ -44,6 +50,9 @@
 
             <div class="card text-light bg-transparent">
                 <div class="card-body">
+                    <br>
+                    <br>
+                    <br>
                     <h1 class="card-title" th:text="${player.name}"></h1>
                     <h4 class="card-title" th:text="${player.ancestry + ' ' +  player.archetype}"></h4>
 
@@ -83,8 +92,21 @@
                     </div>
                     <br>
 
+                    <hr class="hr hr-blurry"/>
+                    <br>
+                    <a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"
+                       class="btn btn-primary">Update</a>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a th:href="@{/deletePlayer/{id}(id=${player.id})}"
+                       class="btn btn-danger">Delete</a>
 
                 </div>
+
+
 
             </div>
 
@@ -97,13 +119,11 @@
             <div class="card text-light bg-transparent">
                 <img src="https://i.imgur.com/nrsbpg2.jpg" class="card-img-top img-thumbnail" alt="<No image>">
                 <div class="card-body">
-
-                    <p class="card-text">Your character sheet is the cornerstone of your Player
-                        Character, or PC. You’ll need it for each and every game session,
-                        along with three six-sided dice (Fantasy AGE doesn’t use any other kind),
-                        one of which should look different from the others. You’ll also need
-                        something to take notes with. A pencil and some scratch paper is ideal</p>
-
+                    <h5 class="card-title">Tips: Gameplay</h5>
+                    <p class="card-text">Some groups use miniature figures and maps to note
+                        where characters are, but you can play Fantasy AGE
+                        perfectly well without them by imagining where characters
+                        and objects are, what some call “theater of the mind.” </p>
                 </div>
             </div>
 
@@ -118,11 +138,6 @@
                 <button class="btn btn-info">Home</button>
             </a>
 
-            <a th:href="@{/showUpdatePlayerForm/{id}(id=${player.id})}"
-               class="btn btn-primary">Update</a>
-
-            <a th:href="@{/deletePlayer/{id}(id=${player.id})}"
-               class="btn btn-danger">Delete</a>
         </div>
     </div>
 
