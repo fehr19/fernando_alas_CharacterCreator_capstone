@@ -1,5 +1,6 @@
 # fernando_alas_CharacterCreator_capstone
 Capstone project for 2023-RTT-48 Full Stack Java Developer Course
+* Note: Please run SQL files ancestry and archetype in MySQL to initialize DB
 
 The goal of my project is to replicate the character creation portion of a tabletop roleplaying game (TTRPG) by the name of Fantasy AGE (or FAGE). 
 
