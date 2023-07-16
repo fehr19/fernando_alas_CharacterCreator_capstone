@@ -11,7 +11,9 @@
     <script src="../../static/script.js" defer></script>
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary"
-      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');">
+      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');
+        background-repeat: no-repeat; background-attachment: fixed;
+        background-size: cover;">
 
 <div class="container text-center bg-black bg-opacity-50">
 
@@ -57,12 +59,22 @@
 
 
         <div id="homeColumn2" class="col-6 bg-transparent">
+            <br>
+
+            <div class="card text-light bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Choosing a Class</h5>
+                    <p class="card-text">If ancestry is where your character comes
+                        from, then class is what they have worked to become. Classes
+                        are both archetypes, defining the types of things your character
+                        is best at, and frameworks for your character’s advancement and
+                        development during their adventuring career. In Fantasy AGE, you
+                        choose from one of four classes: Envoy, Mage, Rogue, and Warrior..</p>
+                </div>
+            </div>
 
             <div class="card">
-
-
                 <div class="card-body">
-                    <h5 class="card-title">Choose a Class</h5>
 
                     <div class="accordion" id="archetypeAccordion">
                         <div class="accordion-item" th:each="archetype : ${listArchetypes}">
@@ -122,6 +134,20 @@
             <div class="card bg-transparent">
                 <div class="card-body">
                     <img src="https://i.imgur.com/hh2Oydn.jpg" class="card-img-top img-thumbnail" alt="...">
+                </div>
+            </div>
+
+            <div class="card text-light bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Extras: Goals and Ties</h5>
+                    <p class="card-text">After creating your character,
+                        take a few minutes to think about your character’s
+                        goals and what ties you might have to other characters
+                        in the group. Even if you’ve made your character on
+                        your own, it’s a good idea to take these last steps
+                        together. Setting up goals and ties as a group allows
+                        you to riff off each other and come up with complementary
+                        ideas</p>
                 </div>
             </div>
         </div>

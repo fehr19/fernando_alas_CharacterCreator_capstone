@@ -5,66 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../static/styles.css"/>
 
     <title>Character Creator</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary"
-      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');">
+      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');
+        background-repeat: no-repeat; background-attachment: fixed;
+        background-size: cover;">
 
-<div class="container my-2 bg-black bg-opacity-50" >
+<div class="container bg-black bg-opacity-50">
+
     <div class="row text-center">
         <div class="col bg-transparent">
-            <h1 class="text-light">TTRPG Character Creator</h1>
+            <h1 class="text-light">Fantasy AGE Character Creator</h1>
         </div>
     </div>
 
-    <div class="row bg-transparent">
-        <div class="col bg-transparent"></div>
+    <div class="row">
 
-        <div class="col-6 bg-black bg-transparent">
-            <h1 class="text-light">Saved Characters</h1>
+        <div id="homeColumn1" class="col bg-transparent">
 
-            <a th:href="@{/showNewPlayerForm}"
-               class="btn btn-info btn-sm mb-3">Create Character</a>
-
-            <table class="table table-responsive-md">
-                <thead class="text-light">
-                <tr>
-                    <th>Character</th>
-                    <th>Ancestry</th>
-                    <th>Class</th>
-                    <th></th>
-
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr class="text-light" th:each="player : ${listPlayers}">
-                    <td th:text="${player.name}"></td>
-                    <td th:text="${player.ancestry}"></td>
-                    <td th:text="${player.archetype}"></td>
-
-                    <td><a th:href="@{/showViewPlayerForm/{id}(id=${player.id})}"
-                           class="btn btn-secondary">View</a>
-                    </td>
-                </tr>
-                </tbody>
-
-            </table>
+            <div class="card text-light bg-transparent">
+                <img src="https://i.imgur.com/FFNiZea.jpg" class="card-img-top img-thumbnail" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Fantasy AGE</h5>
+                    <p class="card-text">Published by Green Ronin, Fantasy AGE is a tabletop
+                        role-playing game (TTRPG) that is easy to learn, fun to play, and
+                        welcoming to new role players. It is powered by the popular Adventure
+                        Game Engine (AGE), which also powers other RPGs such as The Expanse,
+                        Modern AGE, Blue Rose, Cthulhu Awakens, and Fifth Season.</p>
+                </div>
+            </div>
         </div>
-        <div class="col bg-transparent"></div>
+
+
+        <div id="homeColumn2" class="col-6 bg-transparent">
+            <br>
+
+            <div class="card text-light bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Welcome to the Fantasy AGE Character Creator!</h5>
+                    <p class="card-text">This application allows you to easily create
+                    a character for the Fantasy AGE TTRPG. No math needed, and no flipping
+                        back and forth through the book, simply select "Create Character"
+                        below to start building a character!</p>
+
+
+                    <a th:href="@{/showNewPlayerForm}"
+                       class="btn btn-info btn-sm mb-3">Create Character</a>
+
+                    <hr class="hr hr-blurry"/>
+
+                    <h3 class="card-title">Saved Characters</h3>
+
+                    <table class="table table-responsive-md">
+                        <thead class="text-light">
+                        <tr>
+                            <th>Character</th>
+                            <th>Ancestry</th>
+                            <th>Class</th>
+                            <th></th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr class="text-light" th:each="player : ${listPlayers}">
+                            <td th:text="${player.name}"></td>
+                            <td th:text="${player.ancestry}"></td>
+                            <td th:text="${player.archetype}"></td>
+
+                            <td><a th:href="@{/showViewPlayerForm/{id}(id=${player.id})}"
+                                   class="btn btn-secondary">View</a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="homeColumn3" class="col bg-transparent">
+
+            <div class="card text-light bg-transparent">
+                <img src="https://i.imgur.com/kXmnjkr.jpg" class="card-img-top img-thumbnail" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">The Developer</h5>
+                    <p class="card-text">Fernando Alas is a fan of role-playing games, both video game and
+                    tabletop type. His favorite genres are Sci-Fi and Fantasy, which led him to discover
+                    The Expanse TTRPG, which is based on a set of books written by James S.A. Corey.
+                    Liking the AGE system, he explored the other games in Green Ronin's library</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="row text-center">
         <div id="footer" class="col bg-transparent">
-            <button class="btn btn-secondary" disabled>Fernando Alas 2023</button>
+            <a th:href="@{https://www.linkedin.com/in/fernando-alas/}" target="_blank">
+                <button class="btn btn-secondary">Fernando Alas 2023</button>
+            </a>
         </div>
     </div>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

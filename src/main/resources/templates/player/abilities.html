@@ -12,7 +12,9 @@
 
 </head>
 <body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary"
-      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');">
+      style="background-image: url('https://i.imgur.com/jFLCgvD.jpg');
+        background-repeat: no-repeat; background-attachment: fixed;
+        background-size: cover;">
 
 <div class="container text-center bg-black bg-opacity-50">
 
@@ -27,8 +29,9 @@
         <div id="homeColumn1" class="col bg-transparent">
 
             <div class="card bg-transparent">
+                <img src="https://i.imgur.com/o9mB1K3.jpg" class="card-img-top img-thumbnail" alt="...">
                 <div class="card-body">
-                    <img src="https://i.imgur.com/o9mB1K3.jpg" class="card-img-top img-thumbnail" alt="...">
+
                 </div>
             </div>
 
@@ -51,20 +54,18 @@
 
 
         <div id="homeColumn2" class="col-6 bg-transparent">
-            <div class="card text-light bg-transparent">
 
+            <div class="card text-light bg-transparent">
                 <div class="card-body">
                     <h5 class="card-title">Point Assignment</h5>
                     <p class="card-text">Assign Points to your
-                        character.</p>
+                        character's abilities.</p>
                 </div>
-
             </div>
 
             <div class="card text-light bg-transparent">
 
                 <div class="card-body">
-                    <hr class="hr hr-blurry"/>
                     <h5 class="card-title">Points Remaining</h5>
 
                     <div>
@@ -154,14 +155,30 @@
 
         <div id="homeColumn3" class="col bg-transparent">
 
-            <div class="card bg-transparent">
+            <div class="card text-light bg-transparent">
+                <img src="https://i.imgur.com/XA8AdHd.jpg" class="card-img-top img-thumbnail" alt="<No image>">
                 <div class="card-body">
-                    <img src="https://i.imgur.com/XA8AdHd.jpg" class="card-img-top img-thumbnail" alt="<No image>">
+
                 </div>
             </div>
 
             <br>
+
             <button onclick="submit" form="abilitiesForm" class="btn btn-primary">Next ></button>
+
+            <br>
+            <br>
+
+
+            <div class="card text-light bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Extras: Optional Rules</h5>
+                    <p class="card-text">In addition to the core rules, Fantasy AGE 2nd edition also includes
+                        a number of optional rules, such as Peril and Daring. Peril is a system that ramps up
+                        the challenges heroes face, while Daring allows those same heroes to pull off even more
+                        impressive feats.</p>
+                </div>
+            </div>
         </div>
 
     </div>
