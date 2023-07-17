@@ -10,6 +10,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 
+// This is the player character that the user creates
+// It is built using data from Ancestry repo and archetype repo
 @Entity
 @Table(name = "Player_Characters")
 public class Player {
@@ -193,12 +195,16 @@ public class Player {
     }
 
 
+    // This method adds ancestry to player
+    // and calculates speed based on the selected ancestry
     public void addPlayerAncestryToPlayer(PlayerAncestry playerAncestry) {
         this.setPlayerAncestry(playerAncestry);
         this.setAncestry(playerAncestry.getName());
         this.setSpeed(playerAncestry.getSpeedMod() + this.getDexterity());
     }
 
+    // This method adds archetype to player
+    // and calculates health based on the selected archetype
     public void addPlayerArchetypeToPlayer(PlayerArchetype playerArchetype) {
         this.setPlayerArchetype(playerArchetype);
         this.setArchetype(playerArchetype.getName());

@@ -3,6 +3,7 @@ package com.perscholas.archetype;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+// This class contains the archetypes from the book, with their stats
 @Entity
 public class Archetype {
     @Id

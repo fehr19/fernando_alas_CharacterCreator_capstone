@@ -31,6 +31,7 @@ public class PlayerController {
         return "home";
     }
 
+    // To show the player summary
     @GetMapping("/showViewPlayerForm/{id}")
     public String showViewPlayerForm(@PathVariable int id, Model model) {
         Player player = playerService.getPlayerById(id);
@@ -38,7 +39,7 @@ public class PlayerController {
         return"player/viewPlayer";
     }
 
-    // Update player, will change later to run through the steps
+    // Update existing player
     @GetMapping("/showUpdatePlayerForm/{id}")
     public String showUpdateCharacterForm(@PathVariable int id, Model model) {
         Player player = playerService.getPlayerById(id);
@@ -46,6 +47,7 @@ public class PlayerController {
         return "player/name";
     }
 
+    // To delete a player
     @GetMapping("/deletePlayer/{id}")
     public String deletePlayer(@PathVariable int id) {
         this.playerService.deletePlayerById(id);
@@ -82,7 +84,7 @@ public class PlayerController {
         return "player/abilities";
     }
 
-    //Step 4 save abilities and redirect to ancestry Form handler
+    // Step 4 save abilities and redirect to ancestry Form handler
     @PostMapping("/saveAbilities")
     public String saveAbilities(@ModelAttribute("player") Player player) {
         int defense = player.getDexterity() + 10;
@@ -91,7 +93,7 @@ public class PlayerController {
         return "redirect:/showAncestriesForm/" + player.getId();
     }
 
-    // Step 5 Show Ancestry options
+    // Step 5 Show Ancestry options from DB
     @GetMapping("/showAncestriesForm/{id}")
     public String showAncestryForm(@PathVariable(value = "id") int id, Model model) {
         model.addAttribute("listAncestries", ancestryService.getAllAncestries());
@@ -100,6 +102,7 @@ public class PlayerController {
     }
 
 
+    // Step 6 Save Ancestry to player
     @PostMapping("/saveAncestry/{ancestryId}")
     public String saveAncestry(@PathVariable(value = "ancestryId") int ancestryId,
             @ModelAttribute("player") Player player,
@@ -109,6 +112,7 @@ public class PlayerController {
         return "redirect:/showArchetypesForm/" + player.getId();
     }
 
+    // Step 7 Show Archetype options from DB
     @GetMapping("/showArchetypesForm/{id}")
     public String showArchetypesForm(@PathVariable(value="id") int id, Model model) {
         model.addAttribute("listArchetypes", archetypeService.getAllArchetypes());
@@ -116,6 +120,7 @@ public class PlayerController {
         return "player/archetype";
     }
 
+    // Step 8 Save Archetype and redirect to the player summary page
     @PostMapping("/saveArchetype/{archetypeId}")
     public String saveArchetype(@PathVariable(value = "archetypeId") int archetypeId,
                                @ModelAttribute("player") Player player,

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <title>Login</title>
+    <link rel="icon" type="image/ico" href="/static/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body class="p-3 m-0 border-0 bd-example bd-example-row bg-secondary"
+      style="background-image: url('https://i.imgur.com/ZFxlRGv.jpg');
+        background-repeat: no-repeat; background-attachment: fixed;
+        background-size: cover;">
+
+<div class="container text-center ">
+
+    <div class="row text-center">
+        <div class="col bg-transparent">
+            <h1 class="text-light">Fantasy AGE Character Creator</h1>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div id="homeColumn1" class="col bg-transparent">
+
+            <div class="card text-light bg-transparent">
+                <!--<img src="https://i.imgur.com/kXmnjkr.jpg" class="card-img-top img-thumbnail" alt="...">-->
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="homeColumn2" class="col-4 bg-black bg-opacity-75">
+            <br>
+            <br>
+
+
+            <div class="card text-light bg-transparent">
+                <div class="card-body">
+                    <hr class="hr hr-blurry"/>
+                    <br>
+
+
+                    <div class="container loginContainer">
+                        <h5 class="card-title">Log In</h5>
+                        <p class="card-text">You're moments away from creating an awesome
+                            Fantasy Age character to use in an adventure...</p>
+                        <form th:action="@{/login}" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <br>
+
+
+                            <div th:if="${param.error}">
+                                <br>
+                                <div class="alert alert-danger">Invalid username or password.</div>
+                            </div>
+
+                        </form>
+
+                        <br>
+                        <hr class="hr hr-blurry"/>
+                        <br>
+                        <p class="mt-3">Don't have an account? <a th:href="@{/signup}">Sign up here</a></p>
+                    </div>
+
+                    <br>
+                    <hr class="hr hr-blurry"/>
+                    <br>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div id="homeColumn3" class="col bg-transparent">
+
+            <div class="card text-light bg-transparent">
+                <!--<img src="https://i.imgur.com/FFNiZea.jpg" class="card-img-top img-thumbnail" alt="...">-->
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col bg-transparent">
+
+        </div>
+
+        <div class="col-2 bg-black bg-opacity-75 text-center">
+            <a th:href="@{https://www.linkedin.com/in/fernando-alas/}" target="_blank">Fernando Alas 2023
+            </a>
+        </div>
+
+        <div class="col bg-transparent  text-center">
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

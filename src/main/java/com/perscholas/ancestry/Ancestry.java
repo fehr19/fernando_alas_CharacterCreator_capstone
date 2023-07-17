@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+// This class contains the ancestries from the book, with their stats
 @Entity
 public class Ancestry {
     @Id

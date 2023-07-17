@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+// This is added to the player object and is created from the Ancestry class
 @Entity
 public class PlayerAncestry {
 
